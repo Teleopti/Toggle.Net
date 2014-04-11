@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nToggle", "nToggle\nToggle.csproj", "{53193981-62E0-4CEF-A340-A063CF464945}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nToggleTests", "nToggleTests\nToggleTests.csproj", "{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53193981-62E0-4CEF-A340-A063CF464945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53193981-62E0-4CEF-A340-A063CF464945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53193981-62E0-4CEF-A340-A063CF464945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53193981-62E0-4CEF-A340-A063CF464945}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
