@@ -11,9 +11,9 @@ namespace nToggle
 			_configFlags = new List<string>();
 		}
 
-		public void Enable(string someConf)
+		public void Enable(string configFlag)
 		{
-			_configFlags.Add(someConf);
+			_configFlags.Add(configFlag);
 		}
 
 		public IEnumerable<string> Metadata()
