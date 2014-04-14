@@ -35,7 +35,11 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\Specifications\FalseSpecification.cs" />
     <Compile Include="Configuration\InMemoryConfiguration.cs" />
+    <Compile Include="Configuration\Specifications\IToggleSpecification.cs" />
+    <Compile Include="Configuration\Specifications\TrueSpecification.cs" />
+    <Compile Include="Internal\Feature.cs" />
     <Compile Include="IToggleChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\ToggleChecker.cs" />
