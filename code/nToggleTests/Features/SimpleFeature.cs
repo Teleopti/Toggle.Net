@@ -2,10 +2,11 @@
 
 namespace nToggleTests.Features
 {
-	public class SimpleFeature : Feature
+	public class SimpleFeature : IFeature
 	{
-		public SimpleFeature() : base("simplefeature")
+		public string Flag
 		{
+			get { return "Simple Feature"; }
 		}
 	}
 }

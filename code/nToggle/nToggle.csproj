@@ -35,13 +35,15 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Feature.cs" />
     <Compile Include="IFeature.cs" />
     <Compile Include="InMemoryConfiguration.cs" />
     <Compile Include="IToggleChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToggleChecker.cs" />
     <Compile Include="ToggleCheckerFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
