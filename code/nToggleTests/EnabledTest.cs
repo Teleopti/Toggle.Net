@@ -1,5 +1,6 @@
-﻿using nToggle.Configuration;
+﻿using System.Linq;
 using nToggle.Configuration.Specifications;
+using nToggle.Internal;
 using NUnit.Framework;
 using SharpTestsEx;
 
@@ -11,11 +12,11 @@ namespace nToggleTests
 		public void ShouldBeEnabled()
 		{
 			const string flag = "someFlag";
-			var conf = new InMemoryConfiguration();
-			conf.Add(flag, new TrueSpecification());
-			var factory = new ToggleCheckerFactory(conf);
 
-			var nToggle = factory.Build();
+			var nToggle = new ToggleChecker(new[]
+			{
+				new Feature(flag, new TrueSpecification())
+			});
 
 			nToggle.IsEnabled(flag)
 				.Should().Be.True();
@@ -24,12 +25,12 @@ namespace nToggleTests
 		[Test]
 		public void ShouldBeDisabled()
 		{
-			const string flag = "aFlag";
-			var conf = new InMemoryConfiguration();
-			conf.Add(flag, new FalseSpecification());
-			var factory = new ToggleCheckerFactory(conf);
+			const string flag = "someFlag";
 
-			var nToggle = factory.Build();
+			var nToggle = new ToggleChecker(new[]
+			{
+				new Feature(flag, new FalseSpecification())
+			});
 
 			nToggle.IsEnabled(flag)
 				.Should().Be.False();
@@ -38,10 +39,7 @@ namespace nToggleTests
 		[Test]
 		public void ShouldBeDisabledIfNotDefined()
 		{
-			var conf = new InMemoryConfiguration();
-			var factory = new ToggleCheckerFactory(conf);
-
-			var nToggle = factory.Build();
+			var nToggle = new ToggleChecker(Enumerable.Empty<Feature>());
 
 			nToggle.IsEnabled("non existing")
 				.Should().Be.False();

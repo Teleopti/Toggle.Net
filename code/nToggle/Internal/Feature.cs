@@ -6,21 +6,16 @@ namespace nToggle.Internal
 {
 	public class Feature
 	{
-		private readonly ICollection<IToggleSpecification> _specifications;
+		private readonly List<IToggleSpecification> _specifications;
 
-		public Feature(string flag)
+		public Feature(string flag, params IToggleSpecification[] specifications)
 		{
 			Flag = flag;
 			_specifications = new List<IToggleSpecification>();
+			_specifications.AddRange(specifications);
 		}
 
 		public string Flag { get; private set; }
-
-
-		public void AddSpecification(IToggleSpecification specification)
-		{
-			_specifications.Add(specification);
-		}
 
 		public bool IsEnabled()
 		{
