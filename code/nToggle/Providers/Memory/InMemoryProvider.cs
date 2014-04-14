@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using nToggle.Internal;
 
-namespace nToggle.Repositories.Memory
+namespace nToggle.Providers.Memory
 {
 	/// <summary>
 	/// Simple in memory repository. 
 	/// Implemented to be used in tests mainly.
 	/// </summary>
-	public class InMemoryRepository : IFeatureRepository, IEnumerable<Feature>
+	public class InMemoryProvider : IFeatureProvider, IEnumerable<Feature>
 	{
 		private readonly IDictionary<string, Feature> _features;
 
-		public InMemoryRepository()
+		public InMemoryProvider()
 		{
 			_features = new Dictionary<string, Feature>();
 		}

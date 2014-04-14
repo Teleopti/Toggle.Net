@@ -36,8 +36,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repositories\IFeatureRepository.cs" />
-    <Compile Include="Repositories\Memory\InMemoryRepository.cs" />
+    <Compile Include="Providers\IFeatureProvider.cs" />
+    <Compile Include="Providers\Memory\InMemoryProvider.cs" />
     <Compile Include="Specifications\FalseSpecification.cs" />
     <Compile Include="Specifications\IToggleSpecification.cs" />
     <Compile Include="Specifications\TrueSpecification.cs" />

@@ -1,5 +1,5 @@
 ﻿using nToggle.Internal;
-using nToggle.Repositories.Memory;
+using nToggle.Providers.Memory;
 using nToggle.Specifications;
 using NUnit.Framework;
 using SharpTestsEx;
@@ -13,7 +13,7 @@ namespace nToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new InMemoryRepository
+			var nToggle = new ToggleChecker(new InMemoryProvider
 			{
 				new Feature(flag, new FalseSpecification())
 			});
@@ -27,7 +27,7 @@ namespace nToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new InMemoryRepository
+			var nToggle = new ToggleChecker(new InMemoryProvider
 			{
 				new Feature(flag, new FalseSpecification(), new TrueSpecification())
 			});
@@ -39,7 +39,7 @@ namespace nToggleTests.Toggle
 		[Test]
 		public void ShouldBeDisabledIfNotDefined()
 		{
-			var nToggle = new ToggleChecker(new InMemoryRepository());
+			var nToggle = new ToggleChecker(new InMemoryProvider());
 
 			nToggle.IsEnabled("non existing")
 				.Should().Be.False();
@@ -50,7 +50,7 @@ namespace nToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new InMemoryRepository
+			var nToggle = new ToggleChecker(new InMemoryProvider
 			{
 				new Feature(flag)
 			});

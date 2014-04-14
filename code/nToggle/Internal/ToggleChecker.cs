@@ -1,19 +1,19 @@
-﻿using nToggle.Repositories;
+﻿using nToggle.Providers;
 
 namespace nToggle.Internal
 {
 	public class ToggleChecker : IToggleChecker
 	{
-		private readonly IFeatureRepository _featureRepository;
+		private readonly IFeatureProvider _featureProvider;
 
-		public ToggleChecker(IFeatureRepository featureRepository)
+		public ToggleChecker(IFeatureProvider featureProvider)
 		{
-			_featureRepository = featureRepository;
+			_featureProvider = featureProvider;
 		}
 
 		public bool IsEnabled(string flagName)
 		{
-			var feature = _featureRepository.Get(flagName);
+			var feature = _featureProvider.Get(flagName);
 			return feature != null && feature.IsEnabled();
 		}
 	}

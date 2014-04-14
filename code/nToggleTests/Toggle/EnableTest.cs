@@ -1,5 +1,5 @@
 ﻿using nToggle.Internal;
-using nToggle.Repositories.Memory;
+using nToggle.Providers.Memory;
 using nToggle.Specifications;
 using NUnit.Framework;
 using SharpTestsEx;
@@ -13,7 +13,7 @@ namespace nToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new InMemoryRepository
+			var nToggle = new ToggleChecker(new InMemoryProvider
 			{
 				new Feature(flag, new TrueSpecification())
 			});
