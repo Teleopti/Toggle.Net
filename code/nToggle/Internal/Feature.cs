@@ -8,14 +8,14 @@ namespace nToggle.Internal
 	{
 		private readonly List<IToggleSpecification> _specifications;
 
-		public Feature(string flag, params IToggleSpecification[] specifications)
+		public Feature(string flagName, params IToggleSpecification[] specifications)
 		{
-			Flag = flag;
+			FlagName = flagName;
 			_specifications = new List<IToggleSpecification>();
 			_specifications.AddRange(specifications);
 		}
 
-		public string Flag { get; private set; }
+		public string FlagName { get; private set; }
 
 		public bool IsEnabled()
 		{
