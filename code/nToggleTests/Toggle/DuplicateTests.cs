@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using nToggle.Configuration.Specifications;
 using nToggle.Internal;
+using nToggle.Specifications;
 using NUnit.Framework;
 using SharpTestsEx;
 

@@ -1,4 +1,4 @@
-﻿namespace nToggle.Configuration.Specifications
+﻿namespace nToggle.Specifications
 {
 	public class FalseSpecification : IToggleSpecification
 	{
