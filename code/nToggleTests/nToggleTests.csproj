@@ -42,7 +42,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repositories\InMemoryRepositoryTest.cs" />
+    <Compile Include="InMemoryProvider.cs" />
     <Compile Include="Toggle\DisableTest.cs" />
     <Compile Include="Toggle\EnableTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

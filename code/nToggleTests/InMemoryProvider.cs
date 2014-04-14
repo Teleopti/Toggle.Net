@@ -1,13 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using nToggle.Internal;
+using nToggle.Providers;
 
-namespace nToggle.Providers.Memory
+namespace nToggleTests
 {
-	/// <summary>
-	/// Simple in memory repository. 
-	/// Implemented to be used in tests mainly.
-	/// </summary>
 	public class InMemoryProvider : IFeatureProvider, IEnumerable<Feature>
 	{
 		private readonly IDictionary<string, Feature> _features;

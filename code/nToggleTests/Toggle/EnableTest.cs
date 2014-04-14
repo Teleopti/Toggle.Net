@@ -1,5 +1,4 @@
 ﻿using nToggle.Internal;
-using nToggle.Providers.Memory;
 using nToggle.Specifications;
 using NUnit.Framework;
 using SharpTestsEx;
