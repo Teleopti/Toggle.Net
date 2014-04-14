@@ -35,7 +35,6 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\IFeature.cs" />
     <Compile Include="Configuration\InMemoryConfiguration.cs" />
     <Compile Include="IToggleChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

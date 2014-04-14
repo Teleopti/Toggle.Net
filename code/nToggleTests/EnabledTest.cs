@@ -1,5 +1,4 @@
 ﻿using nToggle.Configuration;
-using nToggleTests.Features;
 using NUnit.Framework;
 using SharpTestsEx;
 
@@ -10,14 +9,14 @@ namespace nToggleTests
 		[Test]
 		public void ShouldBeEnabledIfDefined()
 		{
-			var feature = new SimpleFeature();
+			const string flag = "someFlag";
 			var conf = new InMemoryConfiguration();
-			conf.Enable(feature);
+			conf.Enable(flag);
 			var factory = new ToggleCheckerFactory(conf);
 
 			var nToggle = factory.Build();
 
-			nToggle.IsEnabled(feature.Flag)
+			nToggle.IsEnabled(flag)
 				.Should().Be.True();
 		}
 
