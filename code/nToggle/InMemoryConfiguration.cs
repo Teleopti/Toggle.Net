@@ -11,9 +11,9 @@ namespace nToggle
 			_configFlags = new List<string>();
 		}
 
-		public void Enable(string configFlag)
+		public void Enable<T>(T feature) where T : IFeature
 		{
-			_configFlags.Add(configFlag);
+			_configFlags.Add(feature.Flag);
 		}
 
 		public IEnumerable<string> Metadata()
