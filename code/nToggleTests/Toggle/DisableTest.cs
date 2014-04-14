@@ -43,6 +43,20 @@ namespace nToggleTests.Toggle
 
 			nToggle.IsEnabled("non existing")
 				.Should().Be.False();
-		} 
+		}
+
+		[Test]
+		public void ShouldBeDisabledIfNoSpecification()
+		{
+			const string flag = "someFlag";
+
+			var nToggle = new ToggleChecker(new[]
+			{
+				new Feature(flag)
+			});
+
+			nToggle.IsEnabled(flag)
+				.Should().Be.False();
+		}
 	}
 }
