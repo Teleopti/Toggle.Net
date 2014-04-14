@@ -37,6 +37,20 @@ namespace nToggleTests
 		}
 
 		[Test]
+		public void ShouldBeDisableIfAnySpecificationReturnFalse()
+		{
+			const string flag = "someFlag";
+
+			var nToggle = new ToggleChecker(new[]
+			{
+				new Feature(flag, new FalseSpecification(), new TrueSpecification())
+			});
+
+			nToggle.IsEnabled(flag)
+				.Should().Be.False();
+		}
+
+		[Test]
 		public void ShouldBeDisabledIfNotDefined()
 		{
 			var nToggle = new ToggleChecker(Enumerable.Empty<Feature>());
