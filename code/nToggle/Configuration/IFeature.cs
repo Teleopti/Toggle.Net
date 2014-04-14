@@ -1,4 +1,4 @@
-﻿namespace nToggle
+﻿namespace nToggle.Configuration
 {
 	public interface IFeature
 	{

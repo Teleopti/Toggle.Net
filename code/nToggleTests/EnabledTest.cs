@@ -1,4 +1,4 @@
-﻿using nToggle;
+﻿using nToggle.Configuration;
 using nToggleTests.Features;
 using NUnit.Framework;
 using SharpTestsEx;

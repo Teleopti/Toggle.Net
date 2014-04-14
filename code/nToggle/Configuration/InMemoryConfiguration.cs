@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace nToggle
+namespace nToggle.Configuration
 {
 	public class InMemoryConfiguration
 	{

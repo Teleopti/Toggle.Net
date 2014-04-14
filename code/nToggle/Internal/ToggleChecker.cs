@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace nToggle
+namespace nToggle.Internal
 {
 	public class ToggleChecker : IToggleChecker
 	{

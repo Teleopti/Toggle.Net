@@ -1,4 +1,6 @@
-﻿namespace nToggle
+﻿using nToggle.Internal;
+
+namespace nToggle.Configuration
 {
 	public class ToggleCheckerFactory
 	{

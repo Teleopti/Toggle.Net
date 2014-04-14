@@ -1,4 +1,4 @@
-﻿using nToggle;
+﻿using nToggle.Configuration;
 
 namespace nToggleTests.Features
 {
