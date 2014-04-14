@@ -4,24 +4,10 @@ using nToggle.Internal;
 using NUnit.Framework;
 using SharpTestsEx;
 
-namespace nToggleTests.EnableDisable
+namespace nToggleTests.Toggle
 {
-	public class EnableDisableTest
+	public class DisableTest
 	{
-		[Test]
-		public void ShouldBeEnabled()
-		{
-			const string flag = "someFlag";
-
-			var nToggle = new ToggleChecker(new[]
-			{
-				new Feature(flag, new TrueSpecification())
-			});
-
-			nToggle.IsEnabled(flag)
-				.Should().Be.True();
-		}
-
 		[Test]
 		public void ShouldBeDisabled()
 		{
@@ -57,6 +43,6 @@ namespace nToggleTests.EnableDisable
 
 			nToggle.IsEnabled("non existing")
 				.Should().Be.False();
-		}
+		} 
 	}
 }

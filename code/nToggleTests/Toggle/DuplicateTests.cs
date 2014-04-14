@@ -4,7 +4,7 @@ using nToggle.Internal;
 using NUnit.Framework;
 using SharpTestsEx;
 
-namespace nToggleTests.EnableDisable
+namespace nToggleTests.Toggle
 {
 	public class DuplicateTests
 	{

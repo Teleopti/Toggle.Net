@@ -41,8 +41,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnableDisable\DuplicateTests.cs" />
-    <Compile Include="EnableDisable\EnableDisableTest.cs" />
+    <Compile Include="Toggle\DisableTest.cs" />
+    <Compile Include="Toggle\DuplicateTests.cs" />
+    <Compile Include="Toggle\EnableTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
