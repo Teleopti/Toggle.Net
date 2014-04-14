@@ -1,4 +1,5 @@
-﻿using nToggle.Configuration.Specifications;
+﻿using System.Collections.Generic;
+using nToggle.Configuration.Specifications;
 using nToggle.Internal;
 using NUnit.Framework;
 using SharpTestsEx;
@@ -12,7 +13,7 @@ namespace nToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new[]
+			var nToggle = new ToggleChecker(new HashSet<Feature>
 			{
 				new Feature(flag, new TrueSpecification())
 			});

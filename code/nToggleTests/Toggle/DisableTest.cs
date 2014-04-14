@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using nToggle.Configuration.Specifications;
 using nToggle.Internal;
 using NUnit.Framework;
@@ -13,7 +14,7 @@ namespace nToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new[]
+			var nToggle = new ToggleChecker(new HashSet<Feature>
 			{
 				new Feature(flag, new FalseSpecification())
 			});
@@ -27,7 +28,7 @@ namespace nToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new[]
+			var nToggle = new ToggleChecker(new HashSet<Feature>
 			{
 				new Feature(flag, new FalseSpecification(), new TrueSpecification())
 			});
@@ -39,7 +40,7 @@ namespace nToggleTests.Toggle
 		[Test]
 		public void ShouldBeDisabledIfNotDefined()
 		{
-			var nToggle = new ToggleChecker(Enumerable.Empty<Feature>());
+			var nToggle = new ToggleChecker(new HashSet<Feature>());
 
 			nToggle.IsEnabled("non existing")
 				.Should().Be.False();
@@ -50,7 +51,7 @@ namespace nToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new[]
+			var nToggle = new ToggleChecker(new HashSet<Feature>
 			{
 				new Feature(flag)
 			});

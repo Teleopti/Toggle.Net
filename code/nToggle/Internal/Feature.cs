@@ -26,5 +26,16 @@ namespace nToggle.Internal
 		{
 			return Specifications.All(x => x.IsEnabled());
 		}
+
+		public override bool Equals(object obj)
+		{
+			var that = obj as Feature;
+			return that != null && that.FlagName.Equals(FlagName);
+		}
+
+		public override int GetHashCode()
+		{
+			return FlagName.GetHashCode();
+		}
 	}
 }
