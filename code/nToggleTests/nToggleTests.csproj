@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InMemoryProvider.cs" />
+    <Compile Include="TextFile\SimpleIntegrationTest.cs" />
     <Compile Include="Toggle\DisableTest.cs" />
     <Compile Include="Toggle\EnableTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

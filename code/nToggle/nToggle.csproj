@@ -37,6 +37,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Providers\IFeatureProvider.cs" />
+    <Compile Include="Providers\TextFile\FileProvider.cs" />
+    <Compile Include="Providers\TextFile\IReadContent.cs" />
+    <Compile Include="Providers\TextFile\ReadContent.cs" />
     <Compile Include="Specifications\FalseSpecification.cs" />
     <Compile Include="Specifications\IToggleSpecification.cs" />
     <Compile Include="Specifications\TrueSpecification.cs" />
