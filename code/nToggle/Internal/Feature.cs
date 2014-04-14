@@ -9,14 +9,9 @@ namespace nToggle.Internal
 		public Feature(string flagName, params IToggleSpecification[] specifications)
 		{
 			FlagName = flagName;
-			if (specifications.Any())
-			{
-				Specifications = specifications;
-			}
-			else
-			{
-				Specifications = new[] {new FalseSpecification()};
-			}
+			Specifications = specifications.Any() ? 
+					specifications : 
+					new[] {new FalseSpecification()};
 		}
 
 		public string FlagName { get; private set; }

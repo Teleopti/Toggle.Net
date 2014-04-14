@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using nToggle.Configuration.Specifications;
 using nToggle.Internal;
 using NUnit.Framework;
