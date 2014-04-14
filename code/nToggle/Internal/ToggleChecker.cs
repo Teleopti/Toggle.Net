@@ -9,13 +9,13 @@ namespace nToggle.Internal
 
 		public ToggleChecker(IEnumerable<Feature> metadata)
 		{
-			_metadata = metadata.ToDictionary(x => x.Flag);
+			_metadata = metadata.ToDictionary(x => x.FlagName);
 		}
 
-		public bool IsEnabled(string confligFlag)
+		public bool IsEnabled(string flagName)
 		{
 			Feature feature;
-			return _metadata.TryGetValue(confligFlag, out feature) && feature.IsEnabled();
+			return _metadata.TryGetValue(flagName, out feature) && feature.IsEnabled();
 		}
 	}
 }

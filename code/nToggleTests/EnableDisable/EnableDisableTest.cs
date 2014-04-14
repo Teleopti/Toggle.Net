@@ -4,9 +4,9 @@ using nToggle.Internal;
 using NUnit.Framework;
 using SharpTestsEx;
 
-namespace nToggleTests
+namespace nToggleTests.EnableDisable
 {
-	public class EnabledTest
+	public class EnableDisableTest
 	{
 		[Test]
 		public void ShouldBeEnabled()

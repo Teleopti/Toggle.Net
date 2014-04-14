@@ -7,6 +7,6 @@
 	/// </summary>
 	public interface IToggleChecker
 	{
-		bool IsEnabled(string confligFlag);
+		bool IsEnabled(string flagName);
 	}
 }
