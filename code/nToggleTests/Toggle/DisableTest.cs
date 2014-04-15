@@ -12,10 +12,9 @@ namespace nToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new InMemoryProvider
-			{
+			var nToggle = new ToggleChecker(new InMemoryProvider(
 				new Feature(flag, new FalseSpecification())
-			});
+			));
 
 			nToggle.IsEnabled(flag)
 				.Should().Be.False();
@@ -29,7 +28,7 @@ namespace nToggleTests.Toggle
 			var feature = new Feature(flag, new FalseSpecification());
 			feature.AddSpecification(new TrueSpecification());
 
-			var nToggle = new ToggleChecker(new InMemoryProvider{feature});
+			var nToggle = new ToggleChecker(new InMemoryProvider(feature));
 
 			nToggle.IsEnabled(flag)
 				.Should().Be.False();

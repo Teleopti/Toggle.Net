@@ -1,38 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using nToggle.Internal;
 using nToggle.Providers;
 
 namespace nToggleTests
 {
-	public class InMemoryProvider : IFeatureProvider, IEnumerable<Feature>
+	public class InMemoryProvider : IFeatureProvider
 	{
 		private readonly IDictionary<string, Feature> _features;
 
-		public InMemoryProvider()
+		public InMemoryProvider(params Feature[] features)
 		{
-			_features = new Dictionary<string, Feature>();
-		}
-
-		public void Add(Feature feature)
-		{
-			_features.Add(feature.FlagName, feature);
+			_features = features.ToDictionary(x => x.FlagName);
 		}
 
 		public Feature Get(string flagName)
 		{
 			Feature feature;
 			return _features.TryGetValue(flagName, out feature) ? feature : null;
-		}
-
-		public IEnumerator<Feature> GetEnumerator()
-		{
-			return _features.Values.GetEnumerator();
-		}
-
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return GetEnumerator();
 		}
 	}
 }
