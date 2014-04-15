@@ -2,7 +2,7 @@
 
 namespace nToggle.Providers.TextFile
 {
-	public class ReadContent : IReadContent
+	public class ContentReader : IContentReader
 	{
 		public string[] Content(string path)
 		{

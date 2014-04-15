@@ -1,6 +1,6 @@
 ﻿namespace nToggle.Providers.TextFile
 {
-	public interface IReadContent
+	public interface IContentReader
 	{
 		string[] Content(string path);
 	}

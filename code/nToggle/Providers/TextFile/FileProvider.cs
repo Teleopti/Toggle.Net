@@ -19,7 +19,7 @@ namespace nToggle.Providers.TextFile
 			if (_features == null)
 			{
 				_features = new Dictionary<string, Feature>();
-				foreach (var row in new ContentReader().Content(_path))
+				foreach (var row in ReadContent().Content(_path))
 				{
 					var splitByEqualSign = row.Split('=');
 					var flag = splitByEqualSign[0];
@@ -27,6 +27,10 @@ namespace nToggle.Providers.TextFile
 					if (trueOrFalse.Equals("true"))
 					{
 						_features.Add(flag, new Feature(flag, new TrueSpecification()));
+					}
+					if (trueOrFalse.Equals("false"))
+					{
+						_features.Add(flag, new Feature(flag, new FalseSpecification()));
 					}
 				}	
 			}
