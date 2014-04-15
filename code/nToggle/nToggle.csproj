@@ -40,6 +40,7 @@
     <Compile Include="Providers\TextFile\FileProvider.cs" />
     <Compile Include="Providers\TextFile\IContentReader.cs" />
     <Compile Include="Providers\TextFile\ContentReader.cs" />
+    <Compile Include="Providers\TextFile\IncorrectTextFileException.cs" />
     <Compile Include="Specifications\FalseSpecification.cs" />
     <Compile Include="Specifications\IToggleSpecification.cs" />
     <Compile Include="Specifications\TrueSpecification.cs" />
