@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using nToggle.Internal;
 using nToggle.Specifications;
 
@@ -9,12 +8,10 @@ namespace nToggle.Providers.TextFile
 	{
 		private readonly string _path;
 		private IDictionary<string, Feature> _features;
-		private IReadContent _readContent;
 
 		public FileProvider(string path)
 		{
 			_path = path;
-			_readContent = new ReadContent();
 		}
 
 		public Feature Get(string flagName)
@@ -22,7 +19,7 @@ namespace nToggle.Providers.TextFile
 			if (_features == null)
 			{
 				_features = new Dictionary<string, Feature>();
-				foreach (var row in _readContent.Content(_path))
+				foreach (var row in new ContentReader().Content(_path))
 				{
 					var splitByEqualSign = row.Split('=');
 					var flag = splitByEqualSign[0];
@@ -34,6 +31,11 @@ namespace nToggle.Providers.TextFile
 				}	
 			}
 			return _features[flagName];
+		}
+
+		protected virtual IContentReader ReadContent()
+		{
+			return new ContentReader();
 		}
 	}
 }
