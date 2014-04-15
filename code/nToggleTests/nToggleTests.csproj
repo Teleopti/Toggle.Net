@@ -55,6 +55,7 @@
     <Compile Include="Toggle\DisableTest.cs" />
     <Compile Include="Toggle\EnableTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Toggle\IllegalFeatureStateTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

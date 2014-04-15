@@ -9,15 +9,12 @@ namespace nToggle.Internal
 	{
 		private readonly ICollection<IToggleSpecification> _specifications;
 
-		public Feature(string flagName, params IToggleSpecification[] specifications)
+		public Feature(string flagName, IToggleSpecification specification, params IToggleSpecification[] specifications)
 		{
 			FlagName = flagName;
 			_specifications = new List<IToggleSpecification>();
+			AddSpecification(specification);
 			Array.ForEach(specifications, AddSpecification);
-			if (!specifications.Any())
-			{
-				AddSpecification(new FalseSpecification());
-			}
 		}
 
 		public string FlagName { get; private set; }
@@ -29,6 +26,8 @@ namespace nToggle.Internal
 
 		public void AddSpecification(IToggleSpecification specification)
 		{
+			if(specification==null)
+				throw new ArgumentNullException("specification");
 			_specifications.Add(specification);
 		}
 	}
