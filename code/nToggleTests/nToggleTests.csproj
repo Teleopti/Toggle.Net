@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InMemoryProvider.cs" />
+    <Compile Include="TextFile\EdgeCasesTest.cs" />
     <Compile Include="TextFile\FalseTest.cs" />
     <Compile Include="TextFile\Helpers\FileProviderForTest.cs" />
     <Compile Include="TextFile\SimpleIntegrationTest.cs" />

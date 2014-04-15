@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using nToggle.Internal;
 using nToggle.Specifications;
@@ -18,7 +19,7 @@ namespace nToggle.Providers.TextFile
 			{
 				new TrueSpecification(), new FalseSpecification()
 			};
-			_specifications = defaultSpecifications.ToDictionary(x => x.Name);
+			_specifications = defaultSpecifications.ToDictionary(x => x.Name, StringComparer.OrdinalIgnoreCase);
 		}
 
 		public Feature Get(string flagName)
@@ -31,7 +32,7 @@ namespace nToggle.Providers.TextFile
 
 		private IDictionary<string, Feature> parseFile()
 		{
-			var readFeatures = new Dictionary<string, Feature>();
+			var readFeatures = new Dictionary<string, Feature>(StringComparer.OrdinalIgnoreCase);
 			foreach (var row in ReadContent().Content(_path))
 			{
 				var splitByEqualSign = row.Split('=');
