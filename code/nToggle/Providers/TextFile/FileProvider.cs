@@ -13,6 +13,18 @@ namespace nToggle.Providers.TextFile
 	/// Format
 	/// [flag]=[specification]
 	/// [flag].[specification].[param]=[value]
+	/// 
+	/// To remark, use "#" sign.
+	/// 
+	/// <example>
+	/// # This is an example
+	/// 
+	/// NewFeature = false
+	/// Logon = true
+	/// TheThing = myspecification
+	/// TheThing.myspecification.MyParam = 13
+	/// TheThing.myspecification.MyOtherParam = 13
+	/// </example>
 	/// </summary>
 	public class FileProvider : IFeatureProvider
 	{
@@ -56,13 +68,15 @@ namespace nToggle.Providers.TextFile
 				var rowNumber = index + 1;
 				var splitByEqualSign = row.Split('=');
 				var numberOfSplits = splitByEqualSign.Length;
+				var flag = splitByEqualSign[0].Trim();
+				if(flag ==string.Empty || flag.StartsWith("#"))
+					continue;
 				switch (numberOfSplits)
 				{
 					case 1:
 						exOutput.AppendLine(string.Format(MustContainEqualSign, rowNumber));
 						break;
 					case 2:
-						var flag = splitByEqualSign[0].Trim();
 						var specificationName = splitByEqualSign[1].Trim();
 						IToggleSpecification foundSpecification;
 						if (_specifications.TryGetValue(specificationName, out foundSpecification))
