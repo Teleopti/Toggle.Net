@@ -3,7 +3,7 @@
 namespace nToggle.Providers
 {
 	/// <summary>
-	/// Gets or adds features to the repository
+	/// Gets features settings from the source
 	/// </summary>
 	public interface IFeatureProvider
 	{
