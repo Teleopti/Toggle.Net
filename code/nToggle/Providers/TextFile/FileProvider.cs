@@ -66,7 +66,14 @@ namespace nToggle.Providers.TextFile
 						IToggleSpecification foundSpecification;
 						if (_specifications.TryGetValue(specificationName, out foundSpecification))
 						{
-							readFeatures.Add(flag, new Feature(flag, foundSpecification));
+							if (readFeatures.ContainsKey(flag))
+							{
+								readFeatures[flag].AddSpecification(foundSpecification);
+							}
+							else
+							{
+								readFeatures.Add(flag, new Feature(flag, foundSpecification));
+							}
 						}
 						break;
 					default:

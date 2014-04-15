@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using nToggle.Specifications;
 
@@ -6,20 +7,29 @@ namespace nToggle.Internal
 {
 	public class Feature
 	{
+		private readonly ICollection<IToggleSpecification> _specifications;
+
 		public Feature(string flagName, params IToggleSpecification[] specifications)
 		{
 			FlagName = flagName;
-			Specifications = specifications.Any() ? 
-					specifications : 
-					new[] {new FalseSpecification()};
+			_specifications = new List<IToggleSpecification>();
+			Array.ForEach(specifications, AddSpecification);
+			if (!specifications.Any())
+			{
+				AddSpecification(new FalseSpecification());
+			}
 		}
 
 		public string FlagName { get; private set; }
-		public IEnumerable<IToggleSpecification> Specifications { get; private set; }
 
 		public bool IsEnabled()
 		{
-			return Specifications.All(x => x.IsEnabled());
+			return _specifications.All(x => x.IsEnabled());
+		}
+
+		public void AddSpecification(IToggleSpecification specification)
+		{
+			_specifications.Add(specification);
 		}
 
 		public override bool Equals(object obj)
