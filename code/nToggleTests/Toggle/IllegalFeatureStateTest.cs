@@ -11,7 +11,7 @@ namespace nToggleTests.Toggle
 		public void ShouldNotAcceptNullAsFeature()
 		{
 			Assert.Throws<ArgumentNullException>(() => 
-				new Feature("theflag", null)
+					new Feature("theflag", null)
 			);
 		}
 
