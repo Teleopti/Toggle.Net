@@ -4,9 +4,16 @@ namespace nToggle.Providers.TextFile
 {
 	public class ContentReader : IContentReader
 	{
-		public string[] Content(string path)
+		private readonly string _path;
+
+		public ContentReader(string path)
 		{
-			return File.ReadAllLines(path);
+			_path = path;
+		}
+
+		public string[] Content()
+		{
+			return File.ReadAllLines(_path);
 		}
 	}
 }

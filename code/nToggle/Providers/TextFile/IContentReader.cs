@@ -2,6 +2,6 @@
 {
 	public interface IContentReader
 	{
-		string[] Content(string path);
+		string[] Content();
 	}
 }

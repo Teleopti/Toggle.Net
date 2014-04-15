@@ -1,4 +1,5 @@
 ﻿using nToggle.Internal;
+using nToggle.Providers.TextFile;
 using nToggleTests.TextFile.Helpers;
 using NUnit.Framework;
 using SharpTestsEx;
@@ -15,10 +16,9 @@ namespace nToggleTests.TextFile
 				"someflag=false",
 				"someflag=true"
 			};
-			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
+			var toggleChecker = new ToggleChecker(new FileProvider(new FileReaderHardCoded(content)));
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.False();
 		}
-
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using nToggle.Internal;
+using nToggle.Providers.TextFile;
 using nToggleTests.TextFile.Helpers;
 using NUnit.Framework;
 using SharpTestsEx;
@@ -11,7 +12,7 @@ namespace nToggleTests.TextFile
 		public void ShouldFindSpecificationWithWrongCasing()
 		{
 			var content = new[] { "someflag=TrUE" };
-			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
+			var toggleChecker = new ToggleChecker(new FileProvider(new FileReaderHardCoded(content)));
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -20,7 +21,7 @@ namespace nToggleTests.TextFile
 		public void ShouldFindFlagWithWrongCasing()
 		{
 			var content = new[] { "SOMEfLAg=true" };
-			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
+			var toggleChecker = new ToggleChecker(new FileProvider(new FileReaderHardCoded(content)));
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -29,7 +30,7 @@ namespace nToggleTests.TextFile
 		public void ShouldFindUntrimmedFlag()
 		{
 			var content = new[] { "   someflag					  =true" };
-			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
+			var toggleChecker = new ToggleChecker(new FileProvider(new FileReaderHardCoded(content)));
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -38,7 +39,7 @@ namespace nToggleTests.TextFile
 		public void ShouldFindUntrimmedSpecification()
 		{
 			var content = new[] { "someflag=         true		  " };
-			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
+			var toggleChecker = new ToggleChecker(new FileProvider(new FileReaderHardCoded(content)));
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}

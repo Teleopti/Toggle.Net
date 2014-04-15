@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using nToggle;
 using nToggle.Internal;
 using nToggle.Providers.TextFile;
 using NUnit.Framework;
@@ -17,7 +16,7 @@ namespace nToggleTests.TextFile
 			var content = new[] {"someflag=true"};
 			tempPath = Path.GetTempFileName();
 			File.WriteAllLines(tempPath, content);
-			var toggleChecker = new ToggleChecker(new FileProvider(tempPath));
+			var toggleChecker = new ToggleChecker(new FileProvider(new ContentReader(tempPath)));
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}

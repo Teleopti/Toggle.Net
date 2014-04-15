@@ -1,4 +1,5 @@
 ﻿using nToggle.Internal;
+using nToggle.Providers.TextFile;
 using nToggleTests.TextFile.Helpers;
 using NUnit.Framework;
 using SharpTestsEx;
@@ -16,7 +17,7 @@ namespace nToggleTests.TextFile
 				"someflag=true",
 				" # and neither should this"
 			};
-			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
+			var toggleChecker = new ToggleChecker(new FileProvider(new FileReaderHardCoded(content)));
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -31,7 +32,7 @@ namespace nToggleTests.TextFile
 				"",
 				string.Empty
 			};
-			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
+			var toggleChecker = new ToggleChecker(new FileProvider(new FileReaderHardCoded(content)));
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
