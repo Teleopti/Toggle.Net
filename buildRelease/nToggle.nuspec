@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>nToggle</id>
+    <authors>Roger Kratz</authors>
+	<version>$version$</version>
+    <description>Config toggles for .net</description>
+	<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+  </metadata>
+  <files>
+	<file src="..\code\nToggle\bin\Release\nToggle.dll" target="lib\net40\"/>
+	<file src="..\code\nToggle\bin\Release\nToggle.pdb" target="lib\net40\"/>
+  </files>
+</package>
