@@ -43,10 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InMemoryProvider.cs" />
-    <Compile Include="TextFile\FalseShortcutTest.cs" />
-    <Compile Include="TextFile\FileProviderForTest.cs" />
+    <Compile Include="TextFile\FalseTest.cs" />
+    <Compile Include="TextFile\Helpers\FileProviderForTest.cs" />
     <Compile Include="TextFile\SimpleIntegrationTest.cs" />
-    <Compile Include="TextFile\TrueShortCutTest.cs" />
+    <Compile Include="TextFile\TrueTest.cs" />
     <Compile Include="Toggle\DisableTest.cs" />
     <Compile Include="Toggle\EnableTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

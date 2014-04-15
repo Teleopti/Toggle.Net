@@ -1,6 +1,6 @@
 ﻿using nToggle.Providers.TextFile;
 
-namespace nToggleTests.TextFile
+namespace nToggleTests.TextFile.Helpers
 {
 	public class FileProviderForTest : FileProvider
 	{

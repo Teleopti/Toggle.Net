@@ -1,10 +1,11 @@
 ﻿using nToggle.Internal;
+using nToggleTests.TextFile.Helpers;
 using NUnit.Framework;
 using SharpTestsEx;
 
 namespace nToggleTests.TextFile
 {
-	public class FalseShortcutTest
+	public class FalseTest
 	{
 		[Test]
 		public void ShouldBeDisabled()
