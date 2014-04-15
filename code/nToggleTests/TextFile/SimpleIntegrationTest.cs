@@ -16,7 +16,7 @@ namespace nToggleTests.TextFile
 			var content = new[] {"someflag=true"};
 			tempPath = Path.GetTempFileName();
 			File.WriteAllLines(tempPath, content);
-			var toggleChecker = new ToggleChecker(new FileProvider(new ContentReader(tempPath)));
+			var toggleChecker = new ToggleChecker(new FileProvider(new FileReader(tempPath)));
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}

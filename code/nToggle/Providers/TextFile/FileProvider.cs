@@ -32,13 +32,13 @@ namespace nToggle.Providers.TextFile
 		public const string MustOnlyContainOneEqualSign = "More than one equal sign at line {0}.";
 		public const string MustHaveValidSpecification = "Unknown specification '{0}' at line {1}.";
 
-		private readonly IContentReader _contentReader;
+		private readonly IFileReader _fileReader;
 		private IDictionary<string, Feature> _features;
 		private readonly IDictionary<string, IToggleSpecification> _specifications;
 
-		public FileProvider(IContentReader contentReader)
+		public FileProvider(IFileReader fileReader)
 		{
-			_contentReader = contentReader;
+			_fileReader = fileReader;
 			var defaultSpecifications = new IToggleSpecification[]
 			{
 				new TrueSpecification(), new FalseSpecification()
@@ -60,7 +60,7 @@ namespace nToggle.Providers.TextFile
 		private IDictionary<string, Feature> parseFile()
 		{
 			var readFeatures = new Dictionary<string, Feature>(StringComparer.OrdinalIgnoreCase);
-			var content = _contentReader.Content();
+			var content = _fileReader.Content();
 			var exOutput = new StringBuilder();
 			for (var index = 0; index < content.Length; index++)
 			{

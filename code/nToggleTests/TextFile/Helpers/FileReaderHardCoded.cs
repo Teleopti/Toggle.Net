@@ -2,7 +2,7 @@
 
 namespace nToggleTests.TextFile.Helpers
 {
-	public class FileReaderHardCoded : IContentReader
+	public class FileReaderHardCoded : IFileReader
 	{
 		private readonly string[] _content;
 

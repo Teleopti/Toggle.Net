@@ -2,11 +2,11 @@
 
 namespace nToggle.Providers.TextFile
 {
-	public class ContentReader : IContentReader
+	public class FileReader : IFileReader
 	{
 		private readonly string _path;
 
-		public ContentReader(string path)
+		public FileReader(string path)
 		{
 			_path = path;
 		}
