@@ -27,7 +27,10 @@ namespace nToggle.Providers.TextFile
 			if (_features == null)
 				_features = parseFile();
 
-			return _features[flagName];
+			Feature feature;
+			return _features.TryGetValue(flagName, out feature) ? 
+					feature : 
+					null;
 		}
 
 		private IDictionary<string, Feature> parseFile()

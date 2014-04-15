@@ -46,6 +46,7 @@
     <Compile Include="TextFile\EdgeCasesTest.cs" />
     <Compile Include="TextFile\FalseTest.cs" />
     <Compile Include="TextFile\Helpers\FileProviderForTest.cs" />
+    <Compile Include="TextFile\MissingTest.cs" />
     <Compile Include="TextFile\SimpleIntegrationTest.cs" />
     <Compile Include="TextFile\TrueTest.cs" />
     <Compile Include="Toggle\DisableTest.cs" />
