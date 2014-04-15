@@ -36,8 +36,8 @@ namespace nToggle.Providers.TextFile
 			foreach (var row in ReadContent().Content(_path))
 			{
 				var splitByEqualSign = row.Split('=');
-				var flag = splitByEqualSign[0];
-				var specificationName = splitByEqualSign[1];
+				var flag = splitByEqualSign[0].Trim();
+				var specificationName = splitByEqualSign[1].Trim();
 				IToggleSpecification foundSpecification;
 				if (_specifications.TryGetValue(specificationName, out foundSpecification))
 				{

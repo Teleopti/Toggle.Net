@@ -25,5 +25,22 @@ namespace nToggleTests.TextFile
 				.Should().Be.True();
 		}
 
+		[Test]
+		public void ShouldFindUntrimmedFlag()
+		{
+			var content = new[] { "   someflag					  =true" };
+			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
+			toggleChecker.IsEnabled("someflag")
+				.Should().Be.True();
+		}
+
+		[Test]
+		public void ShouldFindUntrimmedSpecification()
+		{
+			var content = new[] { "someflag=         true		  " };
+			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
+			toggleChecker.IsEnabled("someflag")
+				.Should().Be.True();
+		}
 	}
 }
