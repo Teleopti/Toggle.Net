@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using nToggle.Internal;
 using nToggle.Specifications;
 
@@ -8,10 +9,16 @@ namespace nToggle.Providers.TextFile
 	{
 		private readonly string _path;
 		private IDictionary<string, Feature> _features;
+		private readonly IDictionary<string, IToggleSpecification> _specifications;
 
 		public FileProvider(string path)
 		{
 			_path = path;
+			var defaultSpecifications = new IToggleSpecification[]
+			{
+				new TrueSpecification(), new FalseSpecification()
+			};
+			_specifications = defaultSpecifications.ToDictionary(x => x.Name);
 		}
 
 		public Feature Get(string flagName)
@@ -29,14 +36,11 @@ namespace nToggle.Providers.TextFile
 			{
 				var splitByEqualSign = row.Split('=');
 				var flag = splitByEqualSign[0];
-				var trueOrFalse = splitByEqualSign[1];
-				if (trueOrFalse.Equals("true"))
+				var specificationName = splitByEqualSign[1];
+				IToggleSpecification foundSpecification;
+				if (_specifications.TryGetValue(specificationName, out foundSpecification))
 				{
-					readFeatures.Add(flag, new Feature(flag, new TrueSpecification()));
-				}
-				if (trueOrFalse.Equals("false"))
-				{
-					readFeatures.Add(flag, new Feature(flag, new FalseSpecification()));
+					readFeatures.Add(flag, new Feature(flag, foundSpecification));
 				}
 			}
 			return readFeatures;
