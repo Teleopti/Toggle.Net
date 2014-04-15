@@ -11,10 +11,7 @@ namespace nToggleTests.TextFile
 		[Test]
 		public void ShouldContainEqualSign()
 		{
-			var content = new[]
-			{
-				"someflag2"
-			};
+			var content = new[] { "someflag2" };
 			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
 			Assert.Throws<IncorrectTextFileException>(() =>
 				toggleChecker.IsEnabled("someflag")
@@ -50,6 +47,19 @@ namespace nToggleTests.TextFile
 				).ToString();
 			ex.Should().Contain(string.Format(FileProvider.MustContainEqualSign, 1));
 			ex.Should().Contain(string.Format(FileProvider.MustOnlyContainOneEqualSign, 2));
+		}
+
+		[Test]
+		public void ShouldContainValidSpecification()
+		{
+			var content = new[] { "someflag=maybe" };
+			var toggleChecker = new ToggleChecker(new FileProviderForTest(content));
+			Assert.Throws<IncorrectTextFileException>(() =>
+				toggleChecker.IsEnabled("someflag")
+					.Should().Be.False()
+				).ToString()
+				.Should().Contain(string.Format(FileProvider.MustHaveValidSpecification, "maybe", 1));
+
 		}
 	}
 }

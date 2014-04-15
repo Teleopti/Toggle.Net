@@ -18,6 +18,7 @@ namespace nToggle.Providers.TextFile
 	{
 		public const string MustContainEqualSign = "Missing equal sign at line {0}.";
 		public const string MustOnlyContainOneEqualSign = "More than one equal sign at line {0}.";
+		public const string MustHaveValidSpecification = "Unknown specification '{0}' at line {1}.";
 
 		private readonly string _path;
 		private IDictionary<string, Feature> _features;
@@ -74,6 +75,10 @@ namespace nToggle.Providers.TextFile
 							{
 								readFeatures.Add(flag, new Feature(flag, foundSpecification));
 							}
+						}
+						else
+						{
+							exOutput.AppendLine(string.Format(MustHaveValidSpecification, specificationName, rowNumber));
 						}
 						break;
 					default:
