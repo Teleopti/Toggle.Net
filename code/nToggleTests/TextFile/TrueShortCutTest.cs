@@ -1,5 +1,4 @@
 ﻿using nToggle.Internal;
-using nToggleTests.TextFile.Helpers;
 using NUnit.Framework;
 using SharpTestsEx;
 
