@@ -8,7 +8,7 @@
 	<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
   </metadata>
   <files>
-	<file src="..\code\Toggle.Net\bin\Release\NetToggle.dll" target="lib\net40\"/>
-	<file src="..\code\Toggle.Net\bin\Release\NetToggle.pdb" target="lib\net40\"/>
+	<file src="..\code\Toggle.Net\bin\Release\Toggle.Net.dll" target="lib\net40\"/>
+	<file src="..\code\Toggle.Net\bin\Release\Toggle.Net.pdb" target="lib\net40\"/>
   </files>
 </package>
