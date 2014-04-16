@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>NetToggle</id>
+    <id>Toggle.Net</id>
     <authors>Roger Kratz</authors>
 	<version>$version$</version>
     <description>Config toggles for .net</description>
 	<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
   </metadata>
   <files>
-	<file src="..\code\NetToggle\bin\Release\NetToggle.dll" target="lib\net40\"/>
-	<file src="..\code\NetToggle\bin\Release\NetToggle.pdb" target="lib\net40\"/>
+	<file src="..\code\Toggle.Net\bin\Release\NetToggle.dll" target="lib\net40\"/>
+	<file src="..\code\Toggle.Net\bin\Release\NetToggle.pdb" target="lib\net40\"/>
   </files>
 </package>

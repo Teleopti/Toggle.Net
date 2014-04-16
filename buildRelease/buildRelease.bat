@@ -21,7 +21,7 @@ set /p Version=Please enter version number, eg 1.2.0:
 
 %msbuild% nugetPackage.msbuild /v:q /t:BuildRelease
 
-git checkout -- %SRCDIR%\code\NetToggle\Properties\AssemblyInfo.cs
+git checkout -- %SRCDIR%\code\Toggle.Net\Properties\AssemblyInfo.cs
 
 echo -------------------------------
 echo.
