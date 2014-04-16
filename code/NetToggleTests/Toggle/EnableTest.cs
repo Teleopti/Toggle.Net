@@ -12,11 +12,11 @@ namespace NetToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new InMemoryProvider(
+			var toggle = new ToggleChecker(new InMemoryProvider(
 				new Feature(flag, new TrueSpecification())
 			));
 
-			nToggle.IsEnabled(flag)
+			toggle.IsEnabled(flag)
 				.Should().Be.True();
 		}
 	}

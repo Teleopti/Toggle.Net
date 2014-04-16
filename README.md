@@ -1,4 +1,4 @@
-nToggle
+NetToggle
 =======
 
 Feature flags for .net

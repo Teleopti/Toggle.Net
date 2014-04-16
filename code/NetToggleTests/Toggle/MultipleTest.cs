@@ -13,13 +13,13 @@ namespace NetToggleTests.Toggle
 			const string trueFlag = "someFlag";
 			const string falseFlag = "someOtherFlag";
 
-			var nToggle = new ToggleChecker(new InMemoryProvider(
+			var toggle = new ToggleChecker(new InMemoryProvider(
 				new Feature(trueFlag, new TrueSpecification()),
 				new Feature(falseFlag, new FalseSpecification())
 			));
 
-			nToggle.IsEnabled(trueFlag).Should().Be.True();
-			nToggle.IsEnabled(falseFlag).Should().Be.False();
+			toggle.IsEnabled(trueFlag).Should().Be.True();
+			toggle.IsEnabled(falseFlag).Should().Be.False();
 		}
 	}
 }

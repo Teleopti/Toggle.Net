@@ -10,7 +10,7 @@
 	<Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.targets" />
 	
 	<ItemGroup>
-		<AssemblyVersionFiles Include="$(SourceDir)\code\nToggle\Properties\AssemblyInfo.cs"/>
+		<AssemblyVersionFiles Include="$(SourceDir)\code\NetToggle\Properties\AssemblyInfo.cs"/>
 	</ItemGroup>
 
 	<Target Name="BuildRelease" DependsOnTargets="RunBuild;nuget;CopyNuget">
@@ -18,7 +18,7 @@
 	</Target>
 	
 	<Target Name="nuget" DependsOnTargets="MakeBuildDirectory;RunBuild">
-		<Exec Command="$(NugetFolder)\NuGet pack nToggle.nuspec -o $(DeployFolder) -symbols -Prop Configuration=Release -Version $(Version)"
+		<Exec Command="$(NugetFolder)\NuGet pack NetToggle.nuspec -o $(DeployFolder) -symbols -Prop Configuration=Release -Version $(Version)"
 				  WorkingDirectory="$(MSBuildProjectDirectory)"/>
 	</Target>
 	
@@ -29,7 +29,7 @@
 	</Target>
 
 	<Target Name="RunBuild" DependsOnTargets="UpdateAssemblyInfos">
-		<MSBuild Projects="$(SourceDir)\code\nToggle\nToggle.csproj" Targets="Clean;Build" />
+		<MSBuild Projects="$(SourceDir)\code\NetToggle\NetToggle.csproj" Targets="Clean;Build" />
 	</Target>
 
 	<Target Name="MakeBuildDirectory">

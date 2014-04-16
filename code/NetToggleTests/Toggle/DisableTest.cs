@@ -12,11 +12,11 @@ namespace NetToggleTests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var nToggle = new ToggleChecker(new InMemoryProvider(
+			var toggle = new ToggleChecker(new InMemoryProvider(
 				new Feature(flag, new FalseSpecification())
 			));
 
-			nToggle.IsEnabled(flag)
+			toggle.IsEnabled(flag)
 				.Should().Be.False();
 		}
 
@@ -28,18 +28,18 @@ namespace NetToggleTests.Toggle
 			var feature = new Feature(flag, new FalseSpecification());
 			feature.AddSpecification(new TrueSpecification());
 
-			var nToggle = new ToggleChecker(new InMemoryProvider(feature));
+			var toggle = new ToggleChecker(new InMemoryProvider(feature));
 
-			nToggle.IsEnabled(flag)
+			toggle.IsEnabled(flag)
 				.Should().Be.False();
 		}
 
 		[Test]
 		public void ShouldBeDisabledIfNotDefined()
 		{
-			var nToggle = new ToggleChecker(new InMemoryProvider());
+			var toggle = new ToggleChecker(new InMemoryProvider());
 
-			nToggle.IsEnabled("non existing")
+			toggle.IsEnabled("non existing")
 				.Should().Be.False();
 		}
 	}
