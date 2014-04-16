@@ -21,7 +21,7 @@ namespace Toggle.Net.Tests.TextFile
 		}
 
 		[Test]
-		public void ShouldNoContainMoreThanOneEqualSign()
+		public void ShouldNotContainMoreThanOneEqualSign()
 		{
 			var content = new[] { "someflag=true=true" };
 			var toggleChecker = new ToggleChecker(new FileProvider(new FileReaderHardCoded(content)));
