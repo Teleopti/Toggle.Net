@@ -10,9 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{81C2BF
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetToggle", "NetToggle\NetToggle.csproj", "{53193981-62E0-4CEF-A340-A063CF464945}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toggle.Net", "Toggle.Net\Toggle.Net.csproj", "{53193981-62E0-4CEF-A340-A063CF464945}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetToggleTests", "NetToggleTests\NetToggleTests.csproj", "{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toggle.Net.Tests", "Toggle.Net.Tests\Toggle.Net.Tests.csproj", "{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

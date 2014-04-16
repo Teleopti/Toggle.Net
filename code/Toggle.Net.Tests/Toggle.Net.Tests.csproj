@@ -64,7 +64,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NetToggle\NetToggle.csproj">
+    <ProjectReference Include="..\Toggle.Net\Toggle.Net.csproj">
       <Project>{53193981-62e0-4cef-a340-a063cf464945}</Project>
       <Name>NetToggle</Name>
     </ProjectReference>
