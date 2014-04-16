@@ -3,16 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nToggle", "nToggle\nToggle.csproj", "{53193981-62E0-4CEF-A340-A063CF464945}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nToggleTests", "nToggleTests\nToggleTests.csproj", "{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{81C2BFF0-8857-450D-B1FB-2C3D70A086EE}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetToggle", "NetToggle\NetToggle.csproj", "{53193981-62E0-4CEF-A340-A063CF464945}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetToggleTests", "NetToggleTests\NetToggleTests.csproj", "{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

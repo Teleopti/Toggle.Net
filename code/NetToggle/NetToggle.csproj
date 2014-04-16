@@ -7,8 +7,8 @@
     <ProjectGuid>{53193981-62E0-4CEF-A340-A063CF464945}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>nToggle</RootNamespace>
-    <AssemblyName>nToggle</AssemblyName>
+    <RootNamespace>NetToggle</RootNamespace>
+    <AssemblyName>NetToggle</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
