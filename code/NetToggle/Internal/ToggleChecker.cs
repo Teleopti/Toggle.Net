@@ -1,6 +1,6 @@
-﻿using nToggle.Providers;
+﻿using NetToggle.Providers;
 
-namespace nToggle.Internal
+namespace NetToggle.Internal
 {
 	public class ToggleChecker : IToggleChecker
 	{

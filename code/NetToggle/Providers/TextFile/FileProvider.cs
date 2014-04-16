@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using nToggle.Internal;
-using nToggle.Specifications;
+using NetToggle.Internal;
+using NetToggle.Specifications;
 
-namespace nToggle.Providers.TextFile
+namespace NetToggle.Providers.TextFile
 {
 	/// <summary>
 	/// Reads flags and their <see cref="IToggleSpecification"/> from a text file.

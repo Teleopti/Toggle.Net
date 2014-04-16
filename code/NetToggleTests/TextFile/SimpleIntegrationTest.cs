@@ -1,10 +1,10 @@
 ﻿using System.IO;
-using nToggle.Internal;
-using nToggle.Providers.TextFile;
+using NetToggle.Internal;
+using NetToggle.Providers.TextFile;
 using NUnit.Framework;
 using SharpTestsEx;
 
-namespace nToggleTests.TextFile
+namespace NetToggleTests.TextFile
 {
 	public class SimpleIntegrationTest
 	{

@@ -1,9 +1,9 @@
 ﻿using System;
-using nToggle.Internal;
-using nToggle.Specifications;
+using NetToggle.Internal;
+using NetToggle.Specifications;
 using NUnit.Framework;
 
-namespace nToggleTests.Toggle
+namespace NetToggleTests.Toggle
 {
 	public class IllegalFeatureStateTest
 	{

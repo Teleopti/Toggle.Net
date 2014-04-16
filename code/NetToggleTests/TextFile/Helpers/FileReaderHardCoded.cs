@@ -1,6 +1,6 @@
-﻿using nToggle.Providers.TextFile;
+﻿using NetToggle.Providers.TextFile;
 
-namespace nToggleTests.TextFile.Helpers
+namespace NetToggleTests.TextFile.Helpers
 {
 	public class FileReaderHardCoded : IFileReader
 	{

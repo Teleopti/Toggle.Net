@@ -1,10 +1,10 @@
-﻿using nToggle.Internal;
-using nToggle.Providers.TextFile;
-using nToggleTests.TextFile.Helpers;
+﻿using NetToggle.Internal;
+using NetToggle.Providers.TextFile;
+using NetToggleTests.TextFile.Helpers;
 using NUnit.Framework;
 using SharpTestsEx;
 
-namespace nToggleTests.TextFile
+namespace NetToggleTests.TextFile
 {
 	public class MissingTest
 	{

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using nToggle.Specifications;
+using NetToggle.Specifications;
 
-namespace nToggle.Internal
+namespace NetToggle.Internal
 {
 	public class Feature
 	{

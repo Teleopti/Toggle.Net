@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace nToggle.Providers.TextFile
+namespace NetToggle.Providers.TextFile
 {
 	public class FileReader : IFileReader
 	{

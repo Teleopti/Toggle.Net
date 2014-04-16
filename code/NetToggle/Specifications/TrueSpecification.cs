@@ -1,4 +1,4 @@
-﻿namespace nToggle.Specifications
+﻿namespace NetToggle.Specifications
 {
 	public class TrueSpecification : IToggleSpecification
 	{

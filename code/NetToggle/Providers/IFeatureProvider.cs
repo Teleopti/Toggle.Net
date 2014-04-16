@@ -1,6 +1,6 @@
-﻿using nToggle.Internal;
+﻿using NetToggle.Internal;
 
-namespace nToggle.Providers
+namespace NetToggle.Providers
 {
 	/// <summary>
 	/// Gets features settings from the source
