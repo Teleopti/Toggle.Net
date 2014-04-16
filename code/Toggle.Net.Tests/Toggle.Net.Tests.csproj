@@ -7,8 +7,8 @@
     <ProjectGuid>{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NetToggleTests</RootNamespace>
-    <AssemblyName>NetToggleTests</AssemblyName>
+    <RootNamespace>Toggle.Net.Tests</RootNamespace>
+    <AssemblyName>Toggle.Net.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -66,7 +66,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Toggle.Net\Toggle.Net.csproj">
       <Project>{53193981-62e0-4cef-a340-a063cf464945}</Project>
-      <Name>NetToggle</Name>
+      <Name>Toggle.Net</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

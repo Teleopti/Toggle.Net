@@ -1,6 +1,6 @@
-﻿using NetToggle.Internal;
+﻿using Toggle.Net.Internal;
 
-namespace NetToggle
+namespace Toggle.Net
 {
 	/// <summary>
 	/// Main interface at runtime.

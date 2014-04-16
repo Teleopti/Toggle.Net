@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NetToggle.Internal;
-using NetToggle.Providers;
+using Toggle.Net.Internal;
+using Toggle.Net.Providers;
 
-namespace NetToggleTests
+namespace Toggle.Net.Tests
 {
 	public class InMemoryProvider : IFeatureProvider
 	{

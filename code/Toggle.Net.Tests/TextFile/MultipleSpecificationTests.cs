@@ -1,10 +1,10 @@
-﻿using NetToggle.Internal;
-using NetToggle.Providers.TextFile;
-using NetToggleTests.TextFile.Helpers;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SharpTestsEx;
+using Toggle.Net.Internal;
+using Toggle.Net.Providers.TextFile;
+using Toggle.Net.Tests.TextFile.Helpers;
 
-namespace NetToggleTests.TextFile
+namespace Toggle.Net.Tests.TextFile
 {
 	public class MultipleSpecificationTests
 	{

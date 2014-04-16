@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NetToggle.Providers.TextFile
+namespace Toggle.Net.Providers.TextFile
 {
 	public class IncorrectTextFileException : Exception
 	{

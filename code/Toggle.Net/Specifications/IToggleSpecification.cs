@@ -1,6 +1,6 @@
-﻿using NetToggle.Internal;
+﻿using Toggle.Net.Internal;
 
-namespace NetToggle.Specifications
+namespace Toggle.Net.Specifications
 {
 	/// <summary>
 	/// Decides if a <see cref="Feature"/> is enabled ot not.

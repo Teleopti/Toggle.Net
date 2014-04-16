@@ -1,9 +1,9 @@
-﻿using NetToggle.Internal;
-using NetToggle.Specifications;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SharpTestsEx;
+using Toggle.Net.Internal;
+using Toggle.Net.Specifications;
 
-namespace NetToggleTests.Toggle
+namespace Toggle.Net.Tests.Toggle
 {
 	public class DisableTest
 	{
