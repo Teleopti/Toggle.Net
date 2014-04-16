@@ -6,6 +6,7 @@
 	<version>$version$</version>
     <description>Config toggles for .net</description>
 	<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+	<tags>flag, toggle, bit, config, feature, branch</tags>
   </metadata>
   <files>
 	<file src="..\code\Toggle.Net\bin\Release\Toggle.Net.dll" target="lib\net40\"/>
