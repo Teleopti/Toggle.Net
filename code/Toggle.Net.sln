@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toggle.Net", "Toggle.Net\To
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toggle.Net.Tests", "Toggle.Net.Tests\Toggle.Net.Tests.csproj", "{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toggle.Net.Web", "Toggle.Net.Web\Toggle.Net.Web.csproj", "{341FF4EC-AF70-4A09-9BC4-CE33A47D81EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7DD1D0E-F55F-4AC8-B993-AE63238B67B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{341FF4EC-AF70-4A09-9BC4-CE33A47D81EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{341FF4EC-AF70-4A09-9BC4-CE33A47D81EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{341FF4EC-AF70-4A09-9BC4-CE33A47D81EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{341FF4EC-AF70-4A09-9BC4-CE33A47D81EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
