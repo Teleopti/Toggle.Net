@@ -17,7 +17,7 @@ namespace Toggle.Net.Web
 		{
 			makeSureToggleCheckerIsSet(context);
 
-			var flagName = context.Request["flagName"];
+			var flagName = context.Request["flag"];
 			var reply = new ToggleReply
 			{
 				IsEnabled = _toggleChecker.IsEnabled(flagName)
