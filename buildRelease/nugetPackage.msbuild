@@ -20,6 +20,8 @@
 	<Target Name="nuget" DependsOnTargets="MakeBuildDirectory;RunBuild">
 		<Exec Command="$(NugetFolder)\NuGet pack Toggle.Net.nuspec -o $(DeployFolder) -symbols -Prop Configuration=Release -Version $(Version)"
 				  WorkingDirectory="$(MSBuildProjectDirectory)"/>
+		<Exec Command="$(NugetFolder)\NuGet pack Toggle.Net.Web.nuspec -o $(DeployFolder) -symbols -Prop Configuration=Release -Version $(Version)"
+				  WorkingDirectory="$(MSBuildProjectDirectory)"/>				  
 	</Target>
 	
 	<Target Name="CopyNuget">
@@ -29,7 +31,7 @@
 	</Target>
 
 	<Target Name="RunBuild" DependsOnTargets="UpdateAssemblyInfos">
-		<MSBuild Projects="$(SourceDir)\code\Toggle.Net\Toggle.Net.csproj" Targets="Clean;Build" />
+		<MSBuild Projects="$(SourceDir)\code\Toggle.Net.sln" Targets="Clean;Build" />
 	</Target>
 
 	<Target Name="MakeBuildDirectory">

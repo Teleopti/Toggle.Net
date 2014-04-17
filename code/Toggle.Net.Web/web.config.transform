@@ -1,0 +1,15 @@
+﻿<configuration>
+	<appSettings>
+		<add key="toggle.net.txt" value="~/toggle.net.txt"/>
+	</appSettings>
+	<system.web>
+		<httpHandlers>
+			<add verb="POST, GET" path="toggle.net" type="Toggle.Net.Web.ToggleNetHandler"/>
+		</httpHandlers>
+	</system.web>
+	<system.webServer>
+		<handlers>
+			<add name="TestHandler" verb="GET, POST" path="toggle.net" type="Toggle.Net.Web.ToggleNetHandler"/>
+		</handlers>
+	</system.webServer>
+</configuration>
