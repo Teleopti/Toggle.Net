@@ -8,8 +8,8 @@
 		</httpHandlers>
 	</system.web>
 	<system.webServer>
+		<validation validateIntegratedModeConfiguration="false"/>
 		<handlers>
-			<validation validateIntegratedModeConfiguration="false"/>
 			<add name="ToggleNet" verb="GET, POST" path="toggle.axd" type="Toggle.Net.Web.ToggleNetHandler"/>
 		</handlers>
 	</system.webServer>
