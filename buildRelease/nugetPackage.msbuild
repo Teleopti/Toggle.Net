@@ -11,6 +11,7 @@
 	
 	<ItemGroup>
 		<AssemblyVersionFiles Include="$(SourceDir)\code\Toggle.Net\Properties\AssemblyInfo.cs"/>
+		<AssemblyVersionFiles Include="$(SourceDir)\code\Toggle.Net.Web\Properties\AssemblyInfo.cs"/>
 	</ItemGroup>
 
 	<Target Name="BuildRelease" DependsOnTargets="RunBuild;nuget;CopyNuget">
