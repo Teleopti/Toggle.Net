@@ -1,0 +1,9 @@
+Simple usage
+1. Change the path to your toggle file, using the added app setting key "toggle.net.txt" (or create a toggle.net.txt file to the default location)
+2. Add your toggles to you toggle file (https://github.com/Teleopti/Toggle.Net)
+3. http://[yourwebsite]/toggle.axd?flag=[yourFeature] returns if toggle is on or off.
+
+
+
+v 0.3
+- adding releasenotes.txt
