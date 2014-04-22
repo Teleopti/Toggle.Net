@@ -1,5 +1,5 @@
-﻿using System.Configuration;
-using System.Runtime.Remoting.Channels;
+using System;
+using System.Configuration;
 using System.Web;
 using System.Web.Script.Serialization;
 using Toggle.Net.Internal;
@@ -9,18 +9,20 @@ namespace Toggle.Net.Web
 {
 	public class ToggleNetHandler : IHttpHandler
 	{
-		private volatile IToggleChecker _toggleChecker;
-		private readonly object lockObject = new object();
+		private readonly Lazy<IToggleChecker> _toggleChecker;
 		private static readonly JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+		public ToggleNetHandler()
+		{
+			_toggleChecker = new Lazy<IToggleChecker>(makeSureToggleCheckerIsSet);
+		}
 
 		public void ProcessRequest(HttpContext context)
 		{
-			makeSureToggleCheckerIsSet(context);
-
 			var flagName = context.Request["flag"];
 			var reply = new ToggleReply
 			{
-				IsEnabled = _toggleChecker.IsEnabled(flagName)
+				IsEnabled = _toggleChecker.Value.IsEnabled(flagName)
 			};
 			var serialized = serializer.Serialize(reply);
 
@@ -30,17 +32,11 @@ namespace Toggle.Net.Web
 
 		}
 
-		private void makeSureToggleCheckerIsSet(HttpContext context)
+		private IToggleChecker makeSureToggleCheckerIsSet()
 		{
-			if (_toggleChecker != null) return;
-			lock (lockObject)
-			{
-				if (_toggleChecker != null) return;
-
 				const string appSetting = "toggle.net.txt";
-				var path = context.Server.MapPath(ConfigurationManager.AppSettings[appSetting]);
-				_toggleChecker = new ToggleChecker(new FileProvider(new FileReader(path)));
-			}
+				var path = HttpContext.Current.Server.MapPath(ConfigurationManager.AppSettings[appSetting]);
+				return new ToggleChecker(new FileProvider(new FileReader(path)));
 		}
 
 		public bool IsReusable
