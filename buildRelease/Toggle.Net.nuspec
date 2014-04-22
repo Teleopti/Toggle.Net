@@ -12,6 +12,5 @@
 	<file src="..\code\Toggle.Net\bin\Release\Toggle.Net.dll" target="lib\net40\"/>
 	<file src="..\code\Toggle.Net\bin\Release\Toggle.Net.pdb" target="lib\net40\"/>
 	<file src="..\code\Toggle.Net\**\*.cs" target="src"/>
-	<file src="releasenotes.txt" target="readme.txt"/>
   </files>
 </package>

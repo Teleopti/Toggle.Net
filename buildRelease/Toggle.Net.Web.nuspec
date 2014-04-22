@@ -16,6 +16,6 @@
 	<file src="..\code\Toggle.Net.Web\bin\Toggle.Net.Web.pdb" target="lib\net40\"/>
 	<file src="..\code\Toggle.Net.Web\**\*.cs" target="src"/>
 	<file src="..\code\Toggle.Net.Web\web.config.transform" target="content"/>
-	<file src="..\releasenotes.txt" target="readme.txt"/>
+	<file src="..\code\Toggle.Net.Web\releasenotes.txt" target="readme.txt"/>
   </files>
 </package>
