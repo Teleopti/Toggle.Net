@@ -1,4 +1,0 @@
-﻿# test file
-
-enabledFeature = true
-disabledFeature = false

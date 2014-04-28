@@ -11,7 +11,6 @@
 	
 	<ItemGroup>
 		<AssemblyVersionFiles Include="$(SourceDir)\code\Toggle.Net\Properties\AssemblyInfo.cs"/>
-		<AssemblyVersionFiles Include="$(SourceDir)\code\Toggle.Net.Web\Properties\AssemblyInfo.cs"/>
 	</ItemGroup>
 
 	<Target Name="BuildRelease" DependsOnTargets="RunBuild;nuget;CopyNuget">
@@ -20,9 +19,7 @@
 	
 	<Target Name="nuget" DependsOnTargets="MakeBuildDirectory;RunBuild">
 		<Exec Command="$(NugetFolder)\NuGet pack Toggle.Net.nuspec -o $(DeployFolder) -symbols -Prop Configuration=Release -Version $(Version)"
-				  WorkingDirectory="$(MSBuildProjectDirectory)"/>
-		<Exec Command="$(NugetFolder)\NuGet pack Toggle.Net.Web.nuspec -o $(DeployFolder) -symbols -Prop Configuration=Release -Version $(Version)"
-				  WorkingDirectory="$(MSBuildProjectDirectory)"/>				  
+				  WorkingDirectory="$(MSBuildProjectDirectory)"/>			  
 	</Target>
 	
 	<Target Name="CopyNuget">
