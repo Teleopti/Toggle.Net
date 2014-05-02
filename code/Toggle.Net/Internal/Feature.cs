@@ -18,9 +18,9 @@ namespace Toggle.Net.Internal
 
 		public string FlagName { get; private set; }
 
-		public bool IsEnabled()
+		public bool IsEnabled(string currentUser)
 		{
-			return _specifications.All(x => x.IsEnabled());
+			return _specifications.All(x => x.IsEnabled(currentUser));
 		}
 
 		public void AddSpecification(IToggleSpecification specification)

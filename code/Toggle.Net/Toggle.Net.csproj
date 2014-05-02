@@ -42,6 +42,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\IUserProvider.cs" />
+    <Compile Include="Internal\NullUserProvider.cs" />
     <Compile Include="Providers\IFeatureProvider.cs" />
     <Compile Include="Providers\TextFile\FileProvider.cs" />
     <Compile Include="Providers\TextFile\IFileReader.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="IToggleChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\ToggleChecker.cs" />
+    <Compile Include="Specifications\UserSpecification.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="toggle.net.snk" />

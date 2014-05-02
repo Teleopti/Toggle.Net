@@ -7,7 +7,7 @@
 			get { return "false"; }
 		}
 
-		public bool IsEnabled()
+		public bool IsEnabled(string currentUser)
 		{
 			return false;
 		}
