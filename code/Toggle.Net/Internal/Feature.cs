@@ -52,7 +52,7 @@ namespace Toggle.Net.Internal
 			IDictionary<string, string> parameterState;
 			if (!_parameters.TryGetValue(specification, out parameterState))
 			{
-				parameterState=new Dictionary<string, string>();
+				parameterState = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 			}
 			parameterState[parameterName] = parameterValue;
 			_parameters[specification] = parameterState;

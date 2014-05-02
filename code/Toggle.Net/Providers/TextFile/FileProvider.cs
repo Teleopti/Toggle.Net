@@ -125,7 +125,6 @@ namespace Toggle.Net.Providers.TextFile
 					var paramName = splitLeftByDots[2];
 					var paramValue = rightOfEqualSign;
 					readFeatures[feature].AddParameter(_specifications[specification], paramName, paramValue);
-					//_specifications[specification].AddParameter(paramName, paramValue);
 					break;
 				default:
 					exOutput.AppendLine(string.Format(MustHaveTwoDotsIfParameterUse, rowNumber));

@@ -53,6 +53,7 @@
     <Compile Include="Stubs\FileReaderStub.cs" />
     <Compile Include="TextFile\IncorrectTextTest.cs" />
     <Compile Include="TextFile\MissingTest.cs" />
+    <Compile Include="TextFile\WithParameters\EdgeCasesTest.cs" />
     <Compile Include="TextFile\WithParameters\IncorrectTextParametersTest.cs" />
     <Compile Include="TextFile\WithParameters\MultipleFeaturesUsesSameSpecificationTypeTest.cs" />
     <Compile Include="TextFile\WithParameters\MultipleParametersTest.cs" />
