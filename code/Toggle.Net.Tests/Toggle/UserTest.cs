@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SharpTestsEx;
+using Toggle.Net.Configuration;
 using Toggle.Net.Internal;
 using Toggle.Net.Specifications;
 using Toggle.Net.Tests.Stubs;
@@ -15,10 +16,11 @@ namespace Toggle.Net.Tests.Toggle
 			const string currentUser = "roger";
 			const string activedUser = "roger";
 
-			var toggle = new ToggleChecker(new InMemoryProvider(
+			var toggle = new ToggleConfiguration(new InMemoryProvider(
 				new Feature(flag, new UserSpecification(activedUser))
-			));
-			toggle.SetUserProvider(new UserProviderStub(currentUser));
+			))
+			.SetUserProvider(new UserProviderStub(currentUser))
+			.Create();
 
 			toggle.IsEnabled(flag)
 				.Should().Be.True();
@@ -31,10 +33,11 @@ namespace Toggle.Net.Tests.Toggle
 			const string currentUser = "roger";
 			const string activedUser = "someone else";
 
-			var toggle = new ToggleChecker(new InMemoryProvider(
+			var toggle = new ToggleConfiguration(new InMemoryProvider(
 				new Feature(flag, new UserSpecification(activedUser))
-			));
-			toggle.SetUserProvider(new UserProviderStub(currentUser));
+			))
+			.SetUserProvider(new UserProviderStub(currentUser))
+			.Create();
 
 			toggle.IsEnabled(flag)
 				.Should().Be.False();

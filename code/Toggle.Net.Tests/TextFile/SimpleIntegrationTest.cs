@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using NUnit.Framework;
 using SharpTestsEx;
+using Toggle.Net.Configuration;
 using Toggle.Net.Internal;
 using Toggle.Net.Providers.TextFile;
 
@@ -16,7 +17,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[] {"someflag=true"};
 			tempPath = Path.GetTempFileName();
 			File.WriteAllLines(tempPath, content);
-			var toggleChecker = new ToggleChecker(new FileProvider(new FileReader(tempPath)));
+			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReader(tempPath))).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}

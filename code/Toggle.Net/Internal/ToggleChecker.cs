@@ -11,7 +11,6 @@ namespace Toggle.Net.Internal
 		public ToggleChecker(IFeatureProvider featureProvider)
 		{
 			_featureProvider = featureProvider;
-			_userProvider = new NullUserProvider();
 		}
 
 		public bool IsEnabled(string flagName)

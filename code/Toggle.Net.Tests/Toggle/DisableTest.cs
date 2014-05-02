@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SharpTestsEx;
+using Toggle.Net.Configuration;
 using Toggle.Net.Internal;
 using Toggle.Net.Specifications;
 
@@ -12,9 +13,9 @@ namespace Toggle.Net.Tests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var toggle = new ToggleChecker(new InMemoryProvider(
+			var toggle = new ToggleConfiguration(new InMemoryProvider(
 				new Feature(flag, new FalseSpecification())
-			));
+			)).Create();
 
 			toggle.IsEnabled(flag)
 				.Should().Be.False();
@@ -28,7 +29,7 @@ namespace Toggle.Net.Tests.Toggle
 			var feature = new Feature(flag, new FalseSpecification());
 			feature.AddSpecification(new TrueSpecification());
 
-			var toggle = new ToggleChecker(new InMemoryProvider(feature));
+			var toggle = new ToggleConfiguration(new InMemoryProvider(feature)).Create();
 
 			toggle.IsEnabled(flag)
 				.Should().Be.False();
@@ -37,7 +38,7 @@ namespace Toggle.Net.Tests.Toggle
 		[Test]
 		public void ShouldBeDisabledIfNotDefined()
 		{
-			var toggle = new ToggleChecker(new InMemoryProvider());
+			var toggle = new ToggleConfiguration(new InMemoryProvider()).Create();
 
 			toggle.IsEnabled("non existing")
 				.Should().Be.False();
