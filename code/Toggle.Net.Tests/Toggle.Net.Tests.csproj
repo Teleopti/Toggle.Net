@@ -53,11 +53,11 @@
     <Compile Include="Stubs\FileReaderStub.cs" />
     <Compile Include="TextFile\IncorrectTextTest.cs" />
     <Compile Include="TextFile\MissingTest.cs" />
-    <Compile Include="TextFile\MultipleParametersTest.cs" />
+    <Compile Include="TextFile\WithParameters\MultipleParametersTest.cs" />
     <Compile Include="TextFile\MultipleSpecificationTests.cs" />
     <Compile Include="TextFile\RemarkTest.cs" />
     <Compile Include="TextFile\SimpleIntegrationTest.cs" />
-    <Compile Include="TextFile\SingleParameterTest.cs" />
+    <Compile Include="TextFile\WithParameters\SingleParameterTest.cs" />
     <Compile Include="TextFile\TrueTest.cs" />
     <Compile Include="Toggle\DisableTest.cs" />
     <Compile Include="Toggle\EnableTest.cs" />

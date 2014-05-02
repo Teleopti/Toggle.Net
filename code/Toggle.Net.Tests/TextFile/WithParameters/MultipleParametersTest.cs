@@ -4,7 +4,7 @@ using Toggle.Net.Configuration;
 using Toggle.Net.Providers.TextFile;
 using Toggle.Net.Tests.Stubs;
 
-namespace Toggle.Net.Tests.TextFile
+namespace Toggle.Net.Tests.TextFile.WithParameters
 {
 	public class MultipleParametersTest
 	{
