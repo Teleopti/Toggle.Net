@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Configuration\IUserProvider.cs" />
     <Compile Include="Configuration\ToggleConfiguration.cs" />
-    <Compile Include="Internal\NullUserProvider.cs" />
+    <Compile Include="Configuration\NullUserProvider.cs" />
     <Compile Include="Providers\IFeatureProvider.cs" />
     <Compile Include="Providers\TextFile\FileProvider.cs" />
     <Compile Include="Providers\TextFile\IFileReader.cs" />
