@@ -7,10 +7,17 @@ namespace Toggle.Net.Internal
 {
 	public class Feature
 	{
+		public const string FlagNameMustNotContainDots = "Flag name must not contain dots.";
+
 		private readonly ICollection<IToggleSpecification> _specifications;
 
 		public Feature(string flagName, IToggleSpecification specification)
 		{
+			if (flagName.Contains("."))
+			{
+				throw new ArgumentException(FlagNameMustNotContainDots);
+			}
+
 			FlagName = flagName;
 			_specifications = new List<IToggleSpecification>();
 			AddSpecification(specification);
