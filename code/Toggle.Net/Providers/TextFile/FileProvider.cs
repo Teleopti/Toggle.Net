@@ -31,6 +31,8 @@ namespace Toggle.Net.Providers.TextFile
 		public const string MustContainEqualSign = "Missing equal sign at line {0}.";
 		public const string MustOnlyContainOneEqualSign = "More than one equal sign at line {0}.";
 		public const string MustHaveValidSpecification = "Unknown specification '{0}' at line {1}.";
+		public const string MustHaveTwoDotsIfParameterUse =
+			"Wrong parameter usage at line {0}. Use format [feature].[specification].[parametername] = [parametervalue].";
 
 		private readonly IFileReader _fileReader;
 		private IDictionary<string, Feature> _features;
@@ -82,8 +84,7 @@ namespace Toggle.Net.Providers.TextFile
 						break;
 					case 2:
 						var rightOfEqualSign = splitByEqualSign[1].Trim();
-						if (!parseRow(readFeatures, leftOfEqualSign, rightOfEqualSign))
-							exOutput.AppendLine(string.Format(MustHaveValidSpecification, rightOfEqualSign, rowNumber));
+						parseRow(readFeatures, leftOfEqualSign, rightOfEqualSign, rowNumber, exOutput);
 						break;
 					default:
 						exOutput.AppendLine(string.Format(MustOnlyContainOneEqualSign, rowNumber));
@@ -95,7 +96,7 @@ namespace Toggle.Net.Providers.TextFile
 			return readFeatures;
 		}
 
-		private bool parseRow(IDictionary<string, Feature> readFeatures, string leftOfEqualSign, string rightOfEqualSign)
+		private void parseRow(IDictionary<string, Feature> readFeatures, string leftOfEqualSign, string rightOfEqualSign, int rowNumber, StringBuilder exOutput)
 		{
 			var splitLeftByDots = leftOfEqualSign.Split('.');
 			switch (splitLeftByDots.Length)
@@ -112,18 +113,22 @@ namespace Toggle.Net.Providers.TextFile
 						{
 							readFeatures.Add(leftOfEqualSign, new Feature(leftOfEqualSign, foundSpecification));
 						}
-						return true;
 					}
-					return false;
+					else
+					{
+						exOutput.AppendLine(string.Format(MustHaveValidSpecification, rightOfEqualSign, rowNumber));
+					}
+					break;
 				case 3:
 					var flag = splitLeftByDots[0];
 					var specification = splitLeftByDots[1];
 					var paramName = splitLeftByDots[2];
 					var paramValue = rightOfEqualSign;
 					_specifications[specification].AddParameter(paramName, paramValue);
-					return true;
+					break;
 				default:
-					throw new Exception("fix this!");
+					exOutput.AppendLine(string.Format(MustHaveTwoDotsIfParameterUse, rowNumber));
+					break;
 			}
 		}
 	}
