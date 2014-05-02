@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using SharpTestsEx;
 using Toggle.Net.Configuration;
-using Toggle.Net.Internal;
 using Toggle.Net.Providers.TextFile;
 
 namespace Toggle.Net.Tests.TextFile
