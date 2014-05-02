@@ -1,6 +1,4 @@
-﻿using Toggle.Net.Configuration;
-
-namespace Toggle.Net.Internal
+﻿namespace Toggle.Net.Configuration
 {
 	public class NullUserProvider : IUserProvider
 	{
