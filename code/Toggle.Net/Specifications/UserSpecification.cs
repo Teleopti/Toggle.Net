@@ -1,6 +1,8 @@
-﻿namespace Toggle.Net.Specifications
+﻿using System.Collections.Generic;
+
+namespace Toggle.Net.Specifications
 {
-	public class UserSpecification : ToggleSpecification
+	public class UserSpecification : IToggleSpecification
 	{
 		private readonly string _activedUser;
 
@@ -9,12 +11,12 @@
 			_activedUser = activedUser;
 		}
 
-		public override string Name
+		public string Name
 		{
 			get { return "user"; }
 		}
 
-		public override bool IsEnabled(string currentUser)
+		public bool IsEnabled(string currentUser, IDictionary<string, string> parameters)
 		{
 			return currentUser.Equals(_activedUser);
 		}

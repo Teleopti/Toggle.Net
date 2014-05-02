@@ -1,23 +1,24 @@
-﻿using Toggle.Net.Specifications;
+﻿using System.Collections.Generic;
+using Toggle.Net.Specifications;
 
 namespace Toggle.Net.Tests.Stubs
 {
-	public class SpecificationWithMultipleParameters : ToggleSpecification
+	public class SpecificationWithMultipleParameters : IToggleSpecification
 	{
 		public const string ParameterName1 = "TheParameterName1";
 		public const string ParameterName2 = "TheParameterName2";
 		public const string ParameterName3 = "TheParameterName3";
 
-		public override string Name
+		public string Name
 		{
 			get { return "ParametersSpecification"; }
 		}
 
-		public override bool IsEnabled(string currentUser)
+		public bool IsEnabled(string currentUser, IDictionary<string, string> parameters)
 		{
-			return bool.Parse(Parameters[ParameterName1]) &&
-				bool.Parse(Parameters[ParameterName2]) &&
-				bool.Parse(Parameters[ParameterName3]);
+			return bool.Parse(parameters[ParameterName1]) &&
+				bool.Parse(parameters[ParameterName2]) &&
+				bool.Parse(parameters[ParameterName3]);
 		}
 	}
 }

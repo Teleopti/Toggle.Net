@@ -8,11 +8,11 @@ using Toggle.Net.Specifications;
 namespace Toggle.Net.Providers.TextFile
 {
 	/// <summary>
-	/// Reads flags and their <see cref="IToggleSpecification"/> from a text file.
+	/// Reads features and their <see cref="IToggleSpecification"/> from a text file.
 	/// 
 	/// Format
-	/// [flag]=[specification]
-	/// [flag].[specification].[param]=[value]
+	/// [feature]=[specification]
+	/// [feature].[specification].[param]=[value]
 	/// 
 	/// To remark, use "#" sign.
 	/// 
@@ -120,11 +120,12 @@ namespace Toggle.Net.Providers.TextFile
 					}
 					break;
 				case 3:
-					var flag = splitLeftByDots[0];
+					var feature = splitLeftByDots[0];
 					var specification = splitLeftByDots[1];
 					var paramName = splitLeftByDots[2];
 					var paramValue = rightOfEqualSign;
-					_specifications[specification].AddParameter(paramName, paramValue);
+					readFeatures[feature].AddParameter(_specifications[specification], paramName, paramValue);
+					//_specifications[specification].AddParameter(paramName, paramValue);
 					break;
 				default:
 					exOutput.AppendLine(string.Format(MustHaveTwoDotsIfParameterUse, rowNumber));
