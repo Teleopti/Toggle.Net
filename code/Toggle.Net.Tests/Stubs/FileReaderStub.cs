@@ -1,12 +1,12 @@
 ﻿using Toggle.Net.Providers.TextFile;
 
-namespace Toggle.Net.Tests.TextFile.Helpers
+namespace Toggle.Net.Tests.Stubs
 {
-	public class FileReaderHardCoded : IFileReader
+	public class FileReaderStub : IFileReader
 	{
 		private readonly string[] _content;
 
-		public FileReaderHardCoded(string[] content)
+		public FileReaderStub(string[] content)
 		{
 			_content = content;
 		}

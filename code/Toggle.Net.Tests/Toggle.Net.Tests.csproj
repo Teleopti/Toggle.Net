@@ -48,7 +48,7 @@
     <Compile Include="Stubs\UserProviderStub.cs" />
     <Compile Include="TextFile\EdgeCasesTest.cs" />
     <Compile Include="TextFile\FalseTest.cs" />
-    <Compile Include="TextFile\Helpers\FileReaderHardCoded.cs" />
+    <Compile Include="Stubs\FileReaderStub.cs" />
     <Compile Include="TextFile\IncorrectTextTest.cs" />
     <Compile Include="TextFile\MissingTest.cs" />
     <Compile Include="TextFile\MultipleSpecificationTests.cs" />

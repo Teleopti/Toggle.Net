@@ -2,7 +2,7 @@
 using SharpTestsEx;
 using Toggle.Net.Configuration;
 using Toggle.Net.Providers.TextFile;
-using Toggle.Net.Tests.TextFile.Helpers;
+using Toggle.Net.Tests.Stubs;
 
 namespace Toggle.Net.Tests.TextFile
 {
@@ -12,7 +12,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldFindSpecificationWithWrongCasing()
 		{
 			var content = new[] { "someflag=TrUE" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderHardCoded(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -21,7 +21,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldFindFlagWithWrongCasing()
 		{
 			var content = new[] { "SOMEfLAg=true" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderHardCoded(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -30,7 +30,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldFindUntrimmedFlag()
 		{
 			var content = new[] { "   someflag					  =true" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderHardCoded(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -39,7 +39,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldFindUntrimmedSpecification()
 		{
 			var content = new[] { "someflag=         true		  " };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderHardCoded(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}

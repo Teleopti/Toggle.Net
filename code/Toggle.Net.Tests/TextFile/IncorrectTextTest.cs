@@ -2,7 +2,7 @@
 using SharpTestsEx;
 using Toggle.Net.Configuration;
 using Toggle.Net.Providers.TextFile;
-using Toggle.Net.Tests.TextFile.Helpers;
+using Toggle.Net.Tests.Stubs;
 
 namespace Toggle.Net.Tests.TextFile
 {
@@ -12,7 +12,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldContainEqualSign()
 		{
 			var content = new[] { "someflag2" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderHardCoded(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			Assert.Throws<IncorrectTextFileException>(() =>
 				toggleChecker.IsEnabled("someflag")
 					.Should().Be.False()
@@ -24,7 +24,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldNotContainMoreThanOneEqualSign()
 		{
 			var content = new[] { "someflag=true=true" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderHardCoded(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			Assert.Throws<IncorrectTextFileException>(() =>
 				toggleChecker.IsEnabled("someflag")
 					.Should().Be.False()
@@ -40,7 +40,7 @@ namespace Toggle.Net.Tests.TextFile
 				"missingEqual",
 				"multipleEqual=false=true"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderHardCoded(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			var ex = Assert.Throws<IncorrectTextFileException>(() =>
 				toggleChecker.IsEnabled("someflag")
 					.Should().Be.False()
@@ -53,7 +53,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldContainValidSpecification()
 		{
 			var content = new[] { "someflag=maybe" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderHardCoded(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			Assert.Throws<IncorrectTextFileException>(() =>
 				toggleChecker.IsEnabled("someflag")
 					.Should().Be.False()

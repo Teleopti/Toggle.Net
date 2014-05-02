@@ -2,7 +2,7 @@
 using SharpTestsEx;
 using Toggle.Net.Configuration;
 using Toggle.Net.Providers.TextFile;
-using Toggle.Net.Tests.TextFile.Helpers;
+using Toggle.Net.Tests.Stubs;
 
 namespace Toggle.Net.Tests.TextFile
 {
@@ -12,7 +12,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldBeDisabled()
 		{
 			var content = new[] { "someflag=false" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderHardCoded(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.False();
 		} 
