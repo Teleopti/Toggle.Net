@@ -19,6 +19,12 @@ namespace Toggle.Net.Specifications
 		/// <returns></returns>
 		bool IsEnabled(string currentUser);
 
+		/// <summary>
+		/// Adds a parameter to this specification.
+		/// Can be used when validating if this specificatin is valid.
+		/// </summary>
+		/// <param name="parameterName"></param>
+		/// <param name="parameterValue"></param>
 		void AddParameter(string parameterName, string parameterValue);
 	}
 }
