@@ -8,7 +8,7 @@ namespace Toggle.Net.Internal
 		private readonly IFeatureProvider _featureProvider;
 		private IUserProvider _userProvider;
 
-		public ToggleChecker(IFeatureProvider featureProvider)
+		internal ToggleChecker(IFeatureProvider featureProvider)
 		{
 			_featureProvider = featureProvider;
 		}
