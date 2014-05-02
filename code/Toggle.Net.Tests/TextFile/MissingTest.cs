@@ -12,7 +12,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldBeEnabled()
 		{
 			var content = new[] { "someflag=true" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create();
 			toggleChecker.IsEnabled("someflag2")
 				.Should().Be.False();
 		} 

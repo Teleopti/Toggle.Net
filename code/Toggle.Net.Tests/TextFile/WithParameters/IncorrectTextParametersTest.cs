@@ -16,14 +16,13 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 				"myfeature=ParameterSpecification",
 				"myfeature.ParameterSpecification=true"
 			};
-			var fileProvider = new FileProvider(new FileReaderStub(content));
+			var fileProvider = new FileProviderFactory(new FileReaderStub(content));
 			fileProvider.AddSpecification(new SpecificationWithParameter());
-			var toggleChecker = new ToggleConfiguration(fileProvider).Create();
 
 			Assert.Throws<IncorrectTextFileException>(() =>
-				toggleChecker.IsEnabled("someflag")
+				new ToggleConfiguration(fileProvider).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProvider.MustHaveTwoDotsIfParameterUse, 2));
+				.Should().Contain(string.Format(FileProviderFactory.MustHaveTwoDotsIfParameterUse, 2));
 		}
 
 		[Test]
@@ -34,14 +33,13 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 				"myfeature=ParameterSpecification",
 				"myfeature.ParameterSpecification.three.four=true"
 			};
-			var fileProvider = new FileProvider(new FileReaderStub(content));
+			var fileProvider = new FileProviderFactory(new FileReaderStub(content));
 			fileProvider.AddSpecification(new SpecificationWithParameter());
-			var toggleChecker = new ToggleConfiguration(fileProvider).Create();
 
 			Assert.Throws<IncorrectTextFileException>(() =>
-				toggleChecker.IsEnabled("someflag")
+				new ToggleConfiguration(fileProvider).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProvider.MustHaveTwoDotsIfParameterUse, 2));
+				.Should().Contain(string.Format(FileProviderFactory.MustHaveTwoDotsIfParameterUse, 2));
 		}
 	}
 }

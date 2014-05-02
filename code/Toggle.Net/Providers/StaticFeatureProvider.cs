@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using Toggle.Net.Internal;
 
-namespace Toggle.Net.Providers.TextFile
+namespace Toggle.Net.Providers
 {
-	public class FileProvider : IFeatureProvider
+	public class StaticFeatureProvider : IFeatureProvider
 	{
 		private readonly IDictionary<string, Feature> _features;
 
-		public FileProvider(IDictionary<string, Feature> features)
+		public StaticFeatureProvider(IDictionary<string, Feature> features)
 		{
 			_features = features;
 		}
@@ -18,6 +18,6 @@ namespace Toggle.Net.Providers.TextFile
 			return _features.TryGetValue(flagName, out feature) ?
 					feature :
 					null;
-		}
+		} 
 	}
 }

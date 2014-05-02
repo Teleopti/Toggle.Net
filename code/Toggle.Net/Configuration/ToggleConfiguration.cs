@@ -5,12 +5,12 @@ namespace Toggle.Net.Configuration
 {
 	public class ToggleConfiguration
 	{
-		private readonly IFeatureProvider _featureProvider;
+		private readonly IFeatureProviderFactory _featureProviderFactory;
 		private IUserProvider _userProvider;
 
-		public ToggleConfiguration(IFeatureProvider featureProvider)
+		public ToggleConfiguration(IFeatureProviderFactory featureProviderFactory)
 		{
-			_featureProvider = featureProvider;
+			_featureProviderFactory = featureProviderFactory;
 		}
 
 		public ToggleConfiguration SetUserProvider(IUserProvider userProvider)
@@ -25,7 +25,8 @@ namespace Toggle.Net.Configuration
 			{
 				_userProvider = new NullUserProvider();
 			}
-			var ret = new ToggleChecker(_featureProvider);
+			var featureProvider = _featureProviderFactory.Create();
+			var ret = new ToggleChecker(featureProvider);
 			ret.SetUserProvider(_userProvider);
 			return ret;
 		}

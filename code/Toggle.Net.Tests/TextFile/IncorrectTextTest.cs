@@ -12,24 +12,20 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldContainEqualSign()
 		{
 			var content = new[] { "someflag2" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			Assert.Throws<IncorrectTextFileException>(() =>
-				toggleChecker.IsEnabled("someflag")
-					.Should().Be.False()
+					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProvider.MustContainEqualSign, 1));
+				.Should().Contain(string.Format(FileProviderFactory.MustContainEqualSign, 1));
 		}
 
 		[Test]
 		public void ShouldNotContainMoreThanOneEqualSign()
 		{
 			var content = new[] { "someflag=true=true" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			Assert.Throws<IncorrectTextFileException>(() =>
-				toggleChecker.IsEnabled("someflag")
-					.Should().Be.False()
+					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProvider.MustOnlyContainOneEqualSign, 1));
+				.Should().Contain(string.Format(FileProviderFactory.MustOnlyContainOneEqualSign, 1));
 		}
 
 		[Test]
@@ -40,25 +36,21 @@ namespace Toggle.Net.Tests.TextFile
 				"missingEqual",
 				"multipleEqual=false=true"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			var ex = Assert.Throws<IncorrectTextFileException>(() =>
-				toggleChecker.IsEnabled("someflag")
-					.Should().Be.False()
+					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create()
 				).ToString();
-			ex.Should().Contain(string.Format(FileProvider.MustContainEqualSign, 1));
-			ex.Should().Contain(string.Format(FileProvider.MustOnlyContainOneEqualSign, 2));
+			ex.Should().Contain(string.Format(FileProviderFactory.MustContainEqualSign, 1));
+			ex.Should().Contain(string.Format(FileProviderFactory.MustOnlyContainOneEqualSign, 2));
 		}
 
 		[Test]
 		public void ShouldContainValidSpecification()
 		{
 			var content = new[] { "someflag=maybe" };
-			var toggleChecker = new ToggleConfiguration(new FileProvider(new FileReaderStub(content))).Create();
 			Assert.Throws<IncorrectTextFileException>(() =>
-				toggleChecker.IsEnabled("someflag")
-					.Should().Be.False()
+					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProvider.MustHaveValidSpecification, "maybe", 1));
+				.Should().Contain(string.Format(FileProviderFactory.MustHaveValidSpecification, "maybe", 1));
 		}
 	}
 }

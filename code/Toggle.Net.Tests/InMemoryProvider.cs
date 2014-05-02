@@ -5,7 +5,7 @@ using Toggle.Net.Providers;
 
 namespace Toggle.Net.Tests
 {
-	public class InMemoryProvider : IFeatureProvider
+	public class InMemoryProvider : IFeatureProviderFactory
 	{
 		private readonly IDictionary<string, Feature> _features;
 
@@ -13,11 +13,10 @@ namespace Toggle.Net.Tests
 		{
 			_features = features.ToDictionary(x => x.FlagName);
 		}
-
-		public Feature Get(string flagName)
+		
+		public IFeatureProvider Create()
 		{
-			Feature feature;
-			return _features.TryGetValue(flagName, out feature) ? feature : null;
+			return new StaticFeatureProvider(_features);
 		}
 	}
 }
