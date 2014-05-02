@@ -1,13 +1,13 @@
 ﻿namespace Toggle.Net.Specifications
 {
-	public class TrueSpecification : IToggleSpecification
+	public class TrueSpecification : ToggleSpecification
 	{
-		public string Name
+		public override string Name
 		{
 			get { return "true"; }
 		}
 
-		public bool IsEnabled(string currentUser)
+		public override bool IsEnabled(string currentUser)
 		{
 			return true;
 		}

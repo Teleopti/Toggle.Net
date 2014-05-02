@@ -52,6 +52,7 @@
     <Compile Include="Providers\TextFile\IncorrectTextFileException.cs" />
     <Compile Include="Specifications\FalseSpecification.cs" />
     <Compile Include="Specifications\IToggleSpecification.cs" />
+    <Compile Include="Specifications\ToggleSpecification.cs" />
     <Compile Include="Specifications\TrueSpecification.cs" />
     <Compile Include="Internal\Feature.cs" />
     <Compile Include="IToggleChecker.cs" />

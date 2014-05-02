@@ -18,5 +18,7 @@ namespace Toggle.Net.Specifications
 		/// <param name="currentUser"></param>
 		/// <returns></returns>
 		bool IsEnabled(string currentUser);
+
+		void AddParameter(string parameterName, string parameterValue);
 	}
 }

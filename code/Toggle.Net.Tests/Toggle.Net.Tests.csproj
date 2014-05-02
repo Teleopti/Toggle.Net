@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InMemoryProvider.cs" />
+    <Compile Include="Stubs\SpecificationWithParameter.cs" />
     <Compile Include="Stubs\UserProviderStub.cs" />
     <Compile Include="TextFile\EdgeCasesTest.cs" />
     <Compile Include="TextFile\FalseTest.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="TextFile\MultipleSpecificationTests.cs" />
     <Compile Include="TextFile\RemarkTest.cs" />
     <Compile Include="TextFile\SimpleIntegrationTest.cs" />
+    <Compile Include="TextFile\SingleParameterTest.cs" />
     <Compile Include="TextFile\TrueTest.cs" />
     <Compile Include="Toggle\DisableTest.cs" />
     <Compile Include="Toggle\EnableTest.cs" />
