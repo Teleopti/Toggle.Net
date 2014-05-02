@@ -14,7 +14,7 @@ namespace Toggle.Net.Tests.Toggle
 			const string trueFlag = "someFlag";
 			const string falseFlag = "someOtherFlag";
 
-			var toggle = new ToggleConfiguration(new InMemoryProvider(
+			var toggle = new ToggleConfiguration(new InMemoryProviderFactory(
 				new Feature(trueFlag, new TrueSpecification()),
 				new Feature(falseFlag, new FalseSpecification())
 			)).Create();

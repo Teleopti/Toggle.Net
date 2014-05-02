@@ -5,11 +5,11 @@ using Toggle.Net.Providers;
 
 namespace Toggle.Net.Tests
 {
-	public class InMemoryProvider : IFeatureProviderFactory
+	public class InMemoryProviderFactory : IFeatureProviderFactory
 	{
 		private readonly IDictionary<string, Feature> _features;
 
-		public InMemoryProvider(params Feature[] features)
+		public InMemoryProviderFactory(params Feature[] features)
 		{
 			_features = features.ToDictionary(x => x.FlagName);
 		}

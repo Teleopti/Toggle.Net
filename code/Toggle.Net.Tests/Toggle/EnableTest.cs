@@ -13,7 +13,7 @@ namespace Toggle.Net.Tests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var toggle = new ToggleConfiguration(new InMemoryProvider(
+			var toggle = new ToggleConfiguration(new InMemoryProviderFactory(
 				new Feature(flag, new TrueSpecification())
 			)).Create();
 

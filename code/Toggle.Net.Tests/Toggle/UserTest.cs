@@ -16,7 +16,7 @@ namespace Toggle.Net.Tests.Toggle
 			const string currentUser = "roger";
 			const string activedUser = "roger";
 
-			var toggle = new ToggleConfiguration(new InMemoryProvider(
+			var toggle = new ToggleConfiguration(new InMemoryProviderFactory(
 				new Feature(flag, new UserSpecification(activedUser))
 			))
 			.SetUserProvider(new UserProviderStub(currentUser))
@@ -33,7 +33,7 @@ namespace Toggle.Net.Tests.Toggle
 			const string currentUser = "roger";
 			const string activedUser = "someone else";
 
-			var toggle = new ToggleConfiguration(new InMemoryProvider(
+			var toggle = new ToggleConfiguration(new InMemoryProviderFactory(
 				new Feature(flag, new UserSpecification(activedUser))
 			))
 			.SetUserProvider(new UserProviderStub(currentUser))

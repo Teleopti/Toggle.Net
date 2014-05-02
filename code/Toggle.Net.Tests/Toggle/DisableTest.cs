@@ -13,7 +13,7 @@ namespace Toggle.Net.Tests.Toggle
 		{
 			const string flag = "someFlag";
 
-			var toggle = new ToggleConfiguration(new InMemoryProvider(
+			var toggle = new ToggleConfiguration(new InMemoryProviderFactory(
 				new Feature(flag, new FalseSpecification())
 			)).Create();
 
@@ -29,7 +29,7 @@ namespace Toggle.Net.Tests.Toggle
 			var feature = new Feature(flag, new FalseSpecification());
 			feature.AddSpecification(new TrueSpecification());
 
-			var toggle = new ToggleConfiguration(new InMemoryProvider(feature)).Create();
+			var toggle = new ToggleConfiguration(new InMemoryProviderFactory(feature)).Create();
 
 			toggle.IsEnabled(flag)
 				.Should().Be.False();
@@ -38,7 +38,7 @@ namespace Toggle.Net.Tests.Toggle
 		[Test]
 		public void ShouldBeDisabledIfNotDefined()
 		{
-			var toggle = new ToggleConfiguration(new InMemoryProvider()).Create();
+			var toggle = new ToggleConfiguration(new InMemoryProviderFactory()).Create();
 
 			toggle.IsEnabled("non existing")
 				.Should().Be.False();
