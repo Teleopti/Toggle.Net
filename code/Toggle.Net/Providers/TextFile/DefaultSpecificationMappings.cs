@@ -15,6 +15,7 @@ namespace Toggle.Net.Providers.TextFile
 			_mappings["true"] = new TrueSpecification();
 			_mappings["false"] = new FalseSpecification();
 			_mappings["user"] = new UserSpecification();
+			_mappings["random"] = new RandomSpecification();
 		}
 
 		public IDictionary<string, IToggleSpecification> NameSpecificationMappings()

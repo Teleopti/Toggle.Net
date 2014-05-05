@@ -56,6 +56,7 @@
     <Compile Include="Providers\TextFile\ISpecificationMappings.cs" />
     <Compile Include="Specifications\FalseSpecification.cs" />
     <Compile Include="Specifications\IToggleSpecification.cs" />
+    <Compile Include="Specifications\RandomSpecification.cs" />
     <Compile Include="Specifications\TrueSpecification.cs" />
     <Compile Include="Internal\Feature.cs" />
     <Compile Include="IToggleChecker.cs" />
