@@ -5,7 +5,8 @@ namespace Toggle.Net.Specifications
 {
 	/// <summary>
 	/// Decides if a <see cref="Feature"/> is enabled ot not.
-	/// Implementation should be stateless!
+	/// Implementation is shared between diffent features,
+	/// so make sure you don't keep global state.
 	/// </summary>
 	public interface IToggleSpecification
 	{
