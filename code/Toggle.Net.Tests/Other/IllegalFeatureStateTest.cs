@@ -4,7 +4,7 @@ using SharpTestsEx;
 using Toggle.Net.Internal;
 using Toggle.Net.Specifications;
 
-namespace Toggle.Net.Tests.Toggle
+namespace Toggle.Net.Tests.Other
 {
 	public class IllegalFeatureStateTest
 	{
