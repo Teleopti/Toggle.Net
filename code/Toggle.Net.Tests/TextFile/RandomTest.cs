@@ -88,7 +88,30 @@ namespace Toggle.Net.Tests.TextFile
 		[Test]
 		public void ShouldOnlyAcceptInts()
 		{
-			
+			var content = new[]
+			{
+				"someflag=random",
+				"someflag.random." + RandomSpecification.Percent + "=50%"
+			};
+
+			Assert.Throws<IncorrectTextFileException>(() =>
+				new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+			).ToString()
+			.Should().Contain(string.Format(RandomSpecification.MustDeclaredPercentAsInt, "someflag"));
+		}
+
+		[Test]
+		public void ShouldThrowIfMissingPercent()
+		{
+			var content = new[]
+			{
+				"someflag=random"
+			};
+
+			Assert.Throws<IncorrectTextFileException>(() =>
+				new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+			).ToString()
+			.Should().Contain(string.Format(RandomSpecification.MustHaveDeclaredPercent, "someflag"));
 		}
 	}
 }
