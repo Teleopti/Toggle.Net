@@ -15,6 +15,15 @@ namespace Toggle.Net.Tests.TextFile
 			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.False();
+		}
+
+		[Test]
+		public void ShouldBeDisabledIfNonExistingToggle()
+		{
+			var content = new[] { "someflag=true" };
+			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
+			toggleChecker.IsEnabled("someflag2")
+				.Should().Be.False();
 		} 
 	}
 }
