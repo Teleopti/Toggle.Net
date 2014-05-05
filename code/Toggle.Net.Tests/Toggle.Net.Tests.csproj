@@ -62,8 +62,8 @@
     <Compile Include="TextFile\SimpleIntegrationTest.cs" />
     <Compile Include="TextFile\WithParameters\SingleParameterTest.cs" />
     <Compile Include="TextFile\TrueTest.cs" />
-    <Compile Include="Toggle\DisableTest.cs" />
-    <Compile Include="Toggle\EnableTest.cs" />
+    <Compile Include="Toggle\FalseTest.cs" />
+    <Compile Include="Toggle\TrueTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Toggle\IllegalFeatureStateTest.cs" />
     <Compile Include="Toggle\MultipleTest.cs" />

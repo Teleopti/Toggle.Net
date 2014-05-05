@@ -7,7 +7,7 @@ using Toggle.Net.Specifications;
 
 namespace Toggle.Net.Tests.Toggle
 {
-	public class DisableTest
+	public class FalseTest
 	{
 		[Test]
 		public void ShouldBeDisabled()
