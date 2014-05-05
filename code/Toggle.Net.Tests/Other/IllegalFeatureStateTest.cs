@@ -1,6 +1,5 @@
 ﻿using System;
 using NUnit.Framework;
-using SharpTestsEx;
 using Toggle.Net.Internal;
 using Toggle.Net.Specifications;
 
