@@ -44,7 +44,6 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InMemoryProviderFactory.cs" />
     <Compile Include="Stubs\SpecificationWithMultipleParameters.cs" />
     <Compile Include="Stubs\SpecificationWithParameter.cs" />
     <Compile Include="Stubs\UserProviderStub.cs" />

@@ -2,6 +2,7 @@
 using SharpTestsEx;
 using Toggle.Net.Configuration;
 using Toggle.Net.Internal;
+using Toggle.Net.Providers.InMemory;
 using Toggle.Net.Specifications;
 
 namespace Toggle.Net.Tests.Toggle

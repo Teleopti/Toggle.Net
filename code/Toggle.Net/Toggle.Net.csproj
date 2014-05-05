@@ -47,6 +47,7 @@
     <Compile Include="Configuration\NullUserProvider.cs" />
     <Compile Include="Providers\IFeatureProvider.cs" />
     <Compile Include="Providers\IFeatureProviderFactory.cs" />
+    <Compile Include="Providers\InMemory\InMemoryProviderFactory.cs" />
     <Compile Include="Providers\StaticFeatureProvider.cs" />
     <Compile Include="Providers\TextFile\FileProviderFactory.cs" />
     <Compile Include="Providers\TextFile\IFileReader.cs" />

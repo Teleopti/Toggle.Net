@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Toggle.Net.Internal;
-using Toggle.Net.Providers;
 
-namespace Toggle.Net.Tests
+namespace Toggle.Net.Providers.InMemory
 {
 	public class InMemoryProviderFactory : IFeatureProviderFactory
 	{
