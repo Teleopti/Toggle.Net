@@ -46,12 +46,14 @@
   <ItemGroup>
     <Compile Include="Stubs\SpecificationWithMultipleParameters.cs" />
     <Compile Include="Stubs\SpecificationWithParameter.cs" />
+    <Compile Include="Stubs\UserProviderRandom.cs" />
     <Compile Include="Stubs\UserProviderStub.cs" />
     <Compile Include="TextFile\EdgeCasesTest.cs" />
     <Compile Include="TextFile\FalseTest.cs" />
     <Compile Include="Stubs\FileReaderStub.cs" />
     <Compile Include="TextFile\IncorrectTextTest.cs" />
     <Compile Include="TextFile\MissingTest.cs" />
+    <Compile Include="TextFile\RandomTest.cs" />
     <Compile Include="TextFile\UniqueSpecificationNameTest.cs" />
     <Compile Include="TextFile\UserTest.cs" />
     <Compile Include="TextFile\WithParameters\EdgeCasesTest.cs" />
