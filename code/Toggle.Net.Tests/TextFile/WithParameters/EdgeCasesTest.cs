@@ -24,5 +24,39 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
+
+		[Test]
+		public void ShouldTrimAfterParameter()
+		{
+			var content = new[]
+			{
+				"someflag=ParameterSpecification",
+				"someflag.ParameterSpecification.		" + SpecificationWithParameter.ParameterName.ToUpper() + "=true"
+			};
+			var mappings = new DefaultSpecificationMappings();
+			mappings.AddMapping("parameterspecification", new SpecificationWithParameter());
+			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
+			var toggleChecker = new ToggleConfiguration(fileProvider).Create();
+
+			toggleChecker.IsEnabled("someflag")
+				.Should().Be.True();
+		}
+
+		[Test]
+		public void ShouldTrimBeforeFeatureName()
+		{
+			var content = new[]
+			{
+				"				someflag=ParameterSpecification",
+				"			someflag.ParameterSpecification." + SpecificationWithParameter.ParameterName.ToUpper() + "=true"
+			};
+			var mappings = new DefaultSpecificationMappings();
+			mappings.AddMapping("parameterspecification", new SpecificationWithParameter());
+			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
+			var toggleChecker = new ToggleConfiguration(fileProvider).Create();
+
+			toggleChecker.IsEnabled("someflag")
+				.Should().Be.True();
+		}
 	}
 }

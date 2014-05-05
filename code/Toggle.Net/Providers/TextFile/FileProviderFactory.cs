@@ -110,7 +110,7 @@ namespace Toggle.Net.Providers.TextFile
 				case 3:
 					var feature = splitLeftByDots[0];
 					var specification = splitLeftByDots[1];
-					var paramName = splitLeftByDots[2];
+					var paramName = splitLeftByDots[2].Trim();
 					var paramValue = rightOfEqualSign;
 					readFeatures[feature].AddParameter(specificationMappings[specification], paramName, paramValue);
 					break;
