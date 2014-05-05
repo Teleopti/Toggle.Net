@@ -11,11 +11,6 @@ namespace Toggle.Net.Specifications
 			_activedUser = activedUser;
 		}
 
-		public string Name
-		{
-			get { return "user"; }
-		}
-
 		public bool IsEnabled(string currentUser, IDictionary<string, string> parameters)
 		{
 			return currentUser.Equals(_activedUser);

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Toggle.Net.Internal;
 using Toggle.Net.Specifications;
@@ -34,31 +33,21 @@ namespace Toggle.Net.Providers.TextFile
 		public const string MustHaveTwoDotsIfParameterUse =
 			"Wrong parameter usage at line {0}. Use format [feature].[specification].[parametername] = [parametervalue].";
 
-		private readonly IDictionary<string, IToggleSpecification> _specifications;
 		private readonly IFileReader _fileReader;
+		private readonly ISpecificationMappings _specificationMappings;
 
-
-		public FileProviderFactory(IFileReader fileReader)
+		public FileProviderFactory(IFileReader fileReader, ISpecificationMappings specificationMappings)
 		{
 			_fileReader = fileReader;
-			var defaultSpecifications = new IToggleSpecification[]
-			{
-				new TrueSpecification(), new FalseSpecification()
-			};
-			_specifications = defaultSpecifications.ToDictionary(x => x.Name, StringComparer.OrdinalIgnoreCase);
+			_specificationMappings = specificationMappings;
 		}
 
 		public IFeatureProvider Create()
 		{
-			return new StaticFeatureProvider(parseFile());
+			return new StaticFeatureProvider(parseFile(_specificationMappings.NameSpecificationMappings()));
 		}
 
-		public void AddSpecification(IToggleSpecification toggleSpecification)
-		{
-			_specifications.Add(toggleSpecification.Name, toggleSpecification);
-		}
-
-		private IDictionary<string, Feature> parseFile()
+		private IDictionary<string, Feature> parseFile(IDictionary<string, IToggleSpecification> specificationMappings)
 		{
 			var readFeatures = new Dictionary<string, Feature>(StringComparer.OrdinalIgnoreCase);
 			var content = _fileReader.Content();
@@ -78,7 +67,7 @@ namespace Toggle.Net.Providers.TextFile
 						break;
 					case 2:
 						var rightOfEqualSign = splitByEqualSign[1].Trim();
-						parseRow(readFeatures, leftOfEqualSign, rightOfEqualSign, rowNumber, exOutput);
+						parseRow(readFeatures, specificationMappings, leftOfEqualSign, rightOfEqualSign, rowNumber, exOutput);
 						break;
 					default:
 						exOutput.AppendLine(string.Format(MustOnlyContainOneEqualSign, rowNumber));
@@ -90,14 +79,19 @@ namespace Toggle.Net.Providers.TextFile
 			return readFeatures;
 		}
 
-		private void parseRow(IDictionary<string, Feature> readFeatures, string leftOfEqualSign, string rightOfEqualSign, int rowNumber, StringBuilder exOutput)
+		private static void parseRow(IDictionary<string, Feature> readFeatures,
+														IDictionary<string, IToggleSpecification> specificationMappings,
+														string leftOfEqualSign, 
+														string rightOfEqualSign, 
+														int rowNumber, 
+														StringBuilder exOutput)
 		{
 			var splitLeftByDots = leftOfEqualSign.Split('.');
 			switch (splitLeftByDots.Length)
 			{
 				case 1:
 					IToggleSpecification foundSpecification;
-					if (_specifications.TryGetValue(rightOfEqualSign, out foundSpecification))
+					if (specificationMappings.TryGetValue(rightOfEqualSign, out foundSpecification))
 					{
 						if (readFeatures.ContainsKey(leftOfEqualSign))
 						{
@@ -118,7 +112,7 @@ namespace Toggle.Net.Providers.TextFile
 					var specification = splitLeftByDots[1];
 					var paramName = splitLeftByDots[2];
 					var paramValue = rightOfEqualSign;
-					readFeatures[feature].AddParameter(_specifications[specification], paramName, paramValue);
+					readFeatures[feature].AddParameter(specificationMappings[specification], paramName, paramValue);
 					break;
 				default:
 					exOutput.AppendLine(string.Format(MustHaveTwoDotsIfParameterUse, rowNumber));

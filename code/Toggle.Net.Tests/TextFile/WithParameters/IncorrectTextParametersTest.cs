@@ -16,8 +16,9 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 				"myfeature=ParameterSpecification",
 				"myfeature.ParameterSpecification=true"
 			};
-			var fileProvider = new FileProviderFactory(new FileReaderStub(content));
-			fileProvider.AddSpecification(new SpecificationWithParameter());
+			var mappings = new DefaultSpecificationMappings();
+			mappings.NameSpecificationMappings()["parameterSpecification"] = new SpecificationWithParameter();
+			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
 
 			Assert.Throws<IncorrectTextFileException>(() =>
 				new ToggleConfiguration(fileProvider).Create()
@@ -33,8 +34,9 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 				"myfeature=ParameterSpecification",
 				"myfeature.ParameterSpecification.three.four=true"
 			};
-			var fileProvider = new FileProviderFactory(new FileReaderStub(content));
-			fileProvider.AddSpecification(new SpecificationWithParameter());
+			var mappings = new DefaultSpecificationMappings();
+			mappings.NameSpecificationMappings()["parameterSpecification"] = new SpecificationWithParameter();
+			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
 
 			Assert.Throws<IncorrectTextFileException>(() =>
 				new ToggleConfiguration(fileProvider).Create()

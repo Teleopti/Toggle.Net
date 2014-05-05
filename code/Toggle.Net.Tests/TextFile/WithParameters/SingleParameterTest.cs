@@ -16,9 +16,11 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 				"someflag=ParameterSpecification",
 				"someflag.ParameterSpecification." + SpecificationWithParameter.ParameterName + "=true"
 			};
-			var fileProvider = new FileProviderFactory(new FileReaderStub(content));
-			fileProvider.AddSpecification(new SpecificationWithParameter());
+			var mappings = new DefaultSpecificationMappings();
+			mappings.AddMapping("parameterspecification", new SpecificationWithParameter());
+			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
 			var toggleChecker = new ToggleConfiguration(fileProvider).Create();
+
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -31,9 +33,11 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 				"someflag=ParameterSpecification",
 				"someflag.ParameterSpecification." + SpecificationWithParameter.ParameterName + "=false"
 			};
-			var fileProvider = new FileProviderFactory(new FileReaderStub(content));
-			fileProvider.AddSpecification(new SpecificationWithParameter());
+			var mappings = new DefaultSpecificationMappings();
+			mappings.AddMapping("parameterspecification", new SpecificationWithParameter());
+			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
 			var toggleChecker = new ToggleConfiguration(fileProvider).Create();
+
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.False();
 		} 

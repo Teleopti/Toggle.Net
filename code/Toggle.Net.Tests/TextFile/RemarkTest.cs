@@ -17,7 +17,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=true",
 				" # and neither should this"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -32,7 +32,7 @@ namespace Toggle.Net.Tests.TextFile
 				"",
 				string.Empty
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create();
+			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}

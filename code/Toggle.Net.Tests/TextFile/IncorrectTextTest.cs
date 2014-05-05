@@ -13,7 +13,7 @@ namespace Toggle.Net.Tests.TextFile
 		{
 			var content = new[] { "someflag2" };
 			Assert.Throws<IncorrectTextFileException>(() =>
-					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create()
+					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 				).ToString()
 				.Should().Contain(string.Format(FileProviderFactory.MustContainEqualSign, 1));
 		}
@@ -23,7 +23,7 @@ namespace Toggle.Net.Tests.TextFile
 		{
 			var content = new[] { "someflag=true=true" };
 			Assert.Throws<IncorrectTextFileException>(() =>
-					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create()
+					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 				).ToString()
 				.Should().Contain(string.Format(FileProviderFactory.MustOnlyContainOneEqualSign, 1));
 		}
@@ -37,7 +37,7 @@ namespace Toggle.Net.Tests.TextFile
 				"multipleEqual=false=true"
 			};
 			var ex = Assert.Throws<IncorrectTextFileException>(() =>
-					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create()
+					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 				).ToString();
 			ex.Should().Contain(string.Format(FileProviderFactory.MustContainEqualSign, 1));
 			ex.Should().Contain(string.Format(FileProviderFactory.MustOnlyContainOneEqualSign, 2));
@@ -48,7 +48,7 @@ namespace Toggle.Net.Tests.TextFile
 		{
 			var content = new[] { "someflag=maybe" };
 			Assert.Throws<IncorrectTextFileException>(() =>
-					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content))).Create()
+					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 				).ToString()
 				.Should().Contain(string.Format(FileProviderFactory.MustHaveValidSpecification, "maybe", 1));
 		}
