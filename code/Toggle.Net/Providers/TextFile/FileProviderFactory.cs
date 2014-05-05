@@ -112,7 +112,7 @@ namespace Toggle.Net.Providers.TextFile
 						}
 						else
 						{
-							readFeatures.Add(leftOfEqualSign, new Feature(leftOfEqualSign, foundSpecification));
+							readFeatures.Add(leftOfEqualSign, new Feature(foundSpecification));
 						}
 					}
 					else

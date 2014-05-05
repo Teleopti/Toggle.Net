@@ -12,26 +12,17 @@ namespace Toggle.Net.Tests.Other
 		public void ShouldNotAcceptNullAsFeature()
 		{
 			Assert.Throws<ArgumentNullException>(() => 
-					new Feature("theflag", null)
+					new Feature(null)
 			);
 		}
 
 		[Test]
 		public void ShouldNotAcceptNullWhenAddingFeature()
 		{
-			var feature = new Feature("theflag", new FalseSpecification());
+			var feature = new Feature(new FalseSpecification());
 			Assert.Throws<ArgumentNullException>(() =>
 				feature.AddSpecification(null)
 			);
-		}
-
-		[Test]
-		public void ShouldNotHaveDotsInItsName()
-		{
-			Assert.Throws<ArgumentException>(() =>
-				new Feature("flag.name", new FalseSpecification())
-			).ToString()
-			.Should().Contain(Feature.FlagNameMustNotContainDots);
 		}
 	}
 }
