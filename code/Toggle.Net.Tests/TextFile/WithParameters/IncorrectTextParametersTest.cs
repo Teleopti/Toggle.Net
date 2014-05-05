@@ -17,7 +17,7 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 				"myfeature.ParameterSpecification=true"
 			};
 			var mappings = new DefaultSpecificationMappings();
-			mappings.NameSpecificationMappings()["parameterSpecification"] = new SpecificationWithParameter();
+			mappings.AddMapping("parameterSpecification", new SpecificationWithParameter());
 			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
 
 			Assert.Throws<IncorrectTextFileException>(() =>
@@ -35,13 +35,32 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 				"myfeature.ParameterSpecification.three.four=true"
 			};
 			var mappings = new DefaultSpecificationMappings();
-			mappings.NameSpecificationMappings()["parameterSpecification"] = new SpecificationWithParameter();
+			mappings.AddMapping("parameterSpecification", new SpecificationWithParameter());
 			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
 
 			Assert.Throws<IncorrectTextFileException>(() =>
 				new ToggleConfiguration(fileProvider).Create()
 				).ToString()
 				.Should().Contain(string.Format(FileProviderFactory.MustHaveTwoDotsIfParameterUse, 2));
+		}
+
+		[Test]
+		public void ShouldThrowIfParameterIsDeclaredMoreThanOnce()
+		{
+			var content = new[]
+			{
+				"someflag=ParameterSpecification",
+				"someflag.ParameterSpecification." + SpecificationWithParameter.ParameterName + "=true",
+				"someflag.ParameterSpecification." + SpecificationWithParameter.ParameterName + "=true"
+			};
+			var mappings = new DefaultSpecificationMappings();
+			mappings.AddMapping("parameterSpecification", new SpecificationWithParameter());
+			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
+
+			Assert.Throws<IncorrectTextFileException>(() =>
+				new ToggleConfiguration(fileProvider).Create()
+				).ToString()
+				.Should().Contain(string.Format(FileProviderFactory.MustOnlyContainSameParameterOnce, SpecificationWithParameter.ParameterName, 3));
 		}
 	}
 }

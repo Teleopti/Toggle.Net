@@ -40,7 +40,7 @@ namespace Toggle.Net.Internal
 
 		public void AddParameter(IToggleSpecification specification, string parameterName, string parameterValue)
 		{
-			_specificationData[specification][parameterName] = parameterValue;
+			_specificationData[specification].Add(parameterName, parameterValue);
 		}
 	}
 }
