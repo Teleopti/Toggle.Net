@@ -53,6 +53,7 @@
     <Compile Include="TextFile\IncorrectTextTest.cs" />
     <Compile Include="TextFile\MissingTest.cs" />
     <Compile Include="TextFile\UniqueSpecificationNameTest.cs" />
+    <Compile Include="TextFile\UserTest.cs" />
     <Compile Include="TextFile\WithParameters\EdgeCasesTest.cs" />
     <Compile Include="TextFile\WithParameters\IncorrectTextParametersTest.cs" />
     <Compile Include="TextFile\WithParameters\MultipleFeaturesUsesSameSpecificationTypeTest.cs" />
@@ -67,7 +68,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Toggle\IllegalFeatureStateTest.cs" />
     <Compile Include="Toggle\MultipleTest.cs" />
-    <Compile Include="Toggle\UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

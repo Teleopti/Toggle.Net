@@ -14,6 +14,7 @@ namespace Toggle.Net.Providers.TextFile
 			_mappings = new Dictionary<string, IToggleSpecification>(StringComparer.OrdinalIgnoreCase);
 			_mappings["true"] = new TrueSpecification();
 			_mappings["false"] = new FalseSpecification();
+			_mappings["user"] = new UserSpecification();
 		}
 
 		public IDictionary<string, IToggleSpecification> NameSpecificationMappings()
