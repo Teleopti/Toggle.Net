@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Toggle.Net.Internal;
 
 namespace Toggle.Net.Specifications
 {
@@ -12,8 +14,17 @@ namespace Toggle.Net.Specifications
 	public class UserSpecification : IToggleSpecification
 	{
 		public const string Ids = "ids";
+		public const string MustHaveDeclaredIds = "Missing UserSpecification parameter '" + Ids + "' for feature '{0}'.";
 
 		private const char delimiter = ',';
+
+		public void Validate(string toggleName, IDictionary<string, string> parameters)
+		{
+			if (!parameters.Keys.Contains(Ids))
+			{
+				throw new InvalidOperationException(string.Format(MustHaveDeclaredIds, toggleName));
+			}
+		}
 
 		public bool IsEnabled(string currentUser, IDictionary<string, string> parameters)
 		{

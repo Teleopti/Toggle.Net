@@ -45,14 +45,28 @@ namespace Toggle.Net.Providers.TextFile
 
 		public IFeatureProvider Create()
 		{
-			return new StaticFeatureProvider(parseFile(_specificationMappings.NameSpecificationMappings()));
+			var exOutput = new StringBuilder();
+			var featureSettings = parseFile(_specificationMappings.NameSpecificationMappings(), exOutput);
+			foreach (var feature in featureSettings)
+			{
+				try
+				{
+					feature.Value.Validate(feature.Key);
+				}
+				catch (InvalidOperationException ex)
+				{
+					exOutput.AppendLine(ex.Message);
+				}
+			}
+			if (exOutput.Length > 0)
+				throw new IncorrectTextFileException(exOutput.ToString());
+			return new StaticFeatureProvider(featureSettings);
 		}
 
-		private IDictionary<string, Feature> parseFile(IDictionary<string, IToggleSpecification> specificationMappings)
+		private IDictionary<string, Feature> parseFile(IDictionary<string, IToggleSpecification> specificationMappings, StringBuilder exOutput)
 		{
 			var readFeatures = new Dictionary<string, Feature>(StringComparer.OrdinalIgnoreCase);
 			var content = _fileReader.Content();
-			var exOutput = new StringBuilder();
 			for (var index = 0; index < content.Length; index++)
 			{
 				var row = content[index];
@@ -75,8 +89,6 @@ namespace Toggle.Net.Providers.TextFile
 						break;
 				}
 			}
-			if (exOutput.Length > 0)
-				throw new IncorrectTextFileException(exOutput.ToString());
 			return readFeatures;
 		}
 

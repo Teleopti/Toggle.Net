@@ -15,5 +15,9 @@ namespace Toggle.Net.Specifications
 
 			return percent > userHash1To100;
 		}
+
+		public void Validate(string toggleName, IDictionary<string, string> parameters)
+		{
+		}
 	}
 }

@@ -106,5 +106,19 @@ namespace Toggle.Net.Tests.TextFile
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
+
+		[Test]
+		public void ShouldThrowIfMissingIdsValue()
+		{
+			var content = new[]
+			{
+				"someflag=user"
+			};
+
+			Assert.Throws<IncorrectTextFileException>(() =>
+				new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+			).ToString()
+			.Should().Contain(string.Format(UserSpecification.MustHaveDeclaredIds, "someflag"));
+		}
 	}
 }

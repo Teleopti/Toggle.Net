@@ -7,6 +7,10 @@ namespace Toggle.Net.Tests.Stubs
 	{
 		public const string ParameterName = "TheParameterName";
 
+		public void Validate(string toggleName, IDictionary<string, string> parameters)
+		{
+		}
+
 		public bool IsEnabled(string currentUser, IDictionary<string, string> parameters)
 		{
 			return bool.Parse(parameters[ParameterName]);
