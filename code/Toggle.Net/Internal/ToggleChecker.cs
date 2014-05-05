@@ -6,22 +6,18 @@ namespace Toggle.Net.Internal
 	public class ToggleChecker : IToggleChecker
 	{
 		private readonly IFeatureProvider _featureProvider;
-		private IUserProvider _userProvider;
+		private readonly IUserProvider _userProvider;
 
-		internal ToggleChecker(IFeatureProvider featureProvider)
+		internal ToggleChecker(IFeatureProvider featureProvider, IUserProvider userProvider)
 		{
 			_featureProvider = featureProvider;
+			_userProvider = userProvider;
 		}
 
 		public bool IsEnabled(string flagName)
 		{
 			var feature = _featureProvider.Get(flagName);
 			return feature != null && feature.IsEnabled(_userProvider.CurrentUser());
-		}
-
-		public void SetUserProvider(IUserProvider userProvider)
-		{
-			_userProvider = userProvider;
 		}
 	}
 }

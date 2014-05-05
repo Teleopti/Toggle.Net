@@ -26,9 +26,7 @@ namespace Toggle.Net.Configuration
 				_userProvider = new NullUserProvider();
 			}
 			var featureProvider = _featureProviderFactory.Create();
-			var ret = new ToggleChecker(featureProvider);
-			ret.SetUserProvider(_userProvider);
-			return ret;
+			return new ToggleChecker(featureProvider, _userProvider);
 		}
 	}
 }
