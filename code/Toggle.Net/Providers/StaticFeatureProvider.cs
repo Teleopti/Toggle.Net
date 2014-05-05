@@ -12,10 +12,10 @@ namespace Toggle.Net.Providers
 			_features = features;
 		}
 
-		public Feature Get(string flagName)
+		public Feature Get(string toggleName)
 		{
 			Feature feature;
-			return _features.TryGetValue(flagName, out feature) ?
+			return _features.TryGetValue(toggleName, out feature) ?
 					feature :
 					null;
 		} 

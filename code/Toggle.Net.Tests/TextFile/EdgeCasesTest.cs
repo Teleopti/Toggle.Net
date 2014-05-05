@@ -18,7 +18,7 @@ namespace Toggle.Net.Tests.TextFile
 		}
 
 		[Test]
-		public void ShouldFindFlagWithWrongCasing()
+		public void ShouldFindToggleWithWrongCasing()
 		{
 			var content = new[] { "SOMEfLAg=true" };
 			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
@@ -27,7 +27,7 @@ namespace Toggle.Net.Tests.TextFile
 		}
 
 		[Test]
-		public void ShouldFindUntrimmedFlag()
+		public void ShouldFindUntrimmedToggle()
 		{
 			var content = new[] { "   someflag					  =true" };
 			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();

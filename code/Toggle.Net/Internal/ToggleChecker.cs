@@ -14,9 +14,9 @@ namespace Toggle.Net.Internal
 			_userProvider = userProvider;
 		}
 
-		public bool IsEnabled(string flagName)
+		public bool IsEnabled(string toggleName)
 		{
-			var feature = _featureProvider.Get(flagName);
+			var feature = _featureProvider.Get(toggleName);
 			return feature != null && feature.IsEnabled(_userProvider.CurrentUser());
 		}
 	}
