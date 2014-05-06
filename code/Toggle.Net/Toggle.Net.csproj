@@ -55,6 +55,7 @@
     <Compile Include="Providers\TextFile\IncorrectTextFileException.cs" />
     <Compile Include="Providers\TextFile\ISpecificationMappings.cs" />
     <Compile Include="Specifications\FalseSpecification.cs" />
+    <Compile Include="Specifications\InvalidSpecificationParameterException.cs" />
     <Compile Include="Specifications\IToggleSpecification.cs" />
     <Compile Include="Specifications\RandomSpecification.cs" />
     <Compile Include="Specifications\TrueSpecification.cs" />

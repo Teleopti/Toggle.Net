@@ -24,16 +24,16 @@ namespace Toggle.Net.Specifications
 			string parameterValue;
 			if (!parameters.TryGetValue(Percent, out parameterValue))
 			{
-				throw new InvalidOperationException(string.Format(MustHaveDeclaredPercent, toggleName));
+				throw new InvalidSpecificationParameterException(string.Format(MustHaveDeclaredPercent, toggleName));
 			}
 			int percent;
 			if (!int.TryParse(parameterValue, out percent))
 			{
-				throw new InvalidOperationException(string.Format(MustDeclaredPercentAsInt, toggleName));
+				throw new InvalidSpecificationParameterException(string.Format(MustDeclaredPercentAsInt, toggleName));
 			}
 			if (percent < 0 || percent > 100)
 			{
-				throw new InvalidOperationException(string.Format(MustBeBetween0And100, toggleName));
+				throw new InvalidSpecificationParameterException(string.Format(MustBeBetween0And100, toggleName));
 			}
 		}
 	}

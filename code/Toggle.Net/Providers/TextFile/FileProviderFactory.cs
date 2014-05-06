@@ -53,7 +53,7 @@ namespace Toggle.Net.Providers.TextFile
 				{
 					feature.Value.Validate(feature.Key);
 				}
-				catch (InvalidOperationException ex)
+				catch (InvalidSpecificationParameterException ex)
 				{
 					exOutput.AppendLine(ex.Message);
 				}

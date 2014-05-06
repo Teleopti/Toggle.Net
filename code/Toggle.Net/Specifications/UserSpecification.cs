@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Toggle.Net.Specifications
@@ -17,14 +16,6 @@ namespace Toggle.Net.Specifications
 
 		private const char delimiter = ',';
 
-		public void Validate(string toggleName, IDictionary<string, string> parameters)
-		{
-			if (!parameters.Keys.Contains(Ids))
-			{
-				throw new InvalidOperationException(string.Format(MustHaveDeclaredIds, toggleName));
-			}
-		}
-
 		public bool IsEnabled(string currentUser, IDictionary<string, string> parameters)
 		{
 			var currentUserContainsDelimiter = currentUser.Contains(delimiter);
@@ -37,6 +28,14 @@ namespace Toggle.Net.Specifications
 
 			var values = parameterValues.Split(delimiter);
 			return values.Any(value => value.Trim().Equals(currentUser));
+		}
+
+		public void Validate(string toggleName, IDictionary<string, string> parameters)
+		{
+			if (!parameters.Keys.Contains(Ids))
+			{
+				throw new InvalidSpecificationParameterException(string.Format(MustHaveDeclaredIds, toggleName));
+			}
 		}
 	}
 }

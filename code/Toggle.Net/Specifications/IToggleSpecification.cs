@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Toggle.Net.Internal;
 
 namespace Toggle.Net.Specifications
@@ -22,7 +21,7 @@ namespace Toggle.Net.Specifications
 		/// <summary>
 		/// Called once at startup to see if owner <see cref="Feature"/> parameter values
 		/// is valid for this specification.
-		/// If not valid, throw a <see cref="InvalidOperationException"/>
+		/// If not valid, throw a <see cref="InvalidSpecificationParameterException"/>
 		/// with suitable message.
 		/// </summary>
 		/// <param name="toggleName"></param>
