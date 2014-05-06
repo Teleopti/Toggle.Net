@@ -62,5 +62,23 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 				).ToString()
 				.Should().Contain(string.Format(FileProviderFactory.MustOnlyContainSameParameterOnce, SpecificationWithParameter.ParameterName, 3));
 		}
+
+		//maybe allow this and implicitly use specification?
+		[Test]
+		public void ShouldThrowIfParameterIsDeclaredButNoSpecification()
+		{
+			var content = new[]
+			{
+				"someflag.ParameterSpecification." + SpecificationWithParameter.ParameterName + "=true"
+			};
+			var mappings = new DefaultSpecificationMappings();
+			mappings.AddMapping("parameterSpecification", new SpecificationWithParameter());
+			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
+
+			Assert.Throws<IncorrectTextFileException>(() =>
+				new ToggleConfiguration(fileProvider).Create()
+				).ToString()
+				.Should().Contain(string.Format(FileProviderFactory.MustDeclareSpecificationBeforeParameter, "someflag", 1));
+		}
 	}
 }

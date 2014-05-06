@@ -33,6 +33,7 @@ namespace Toggle.Net.Providers.TextFile
 		public const string MustHaveTwoDotsIfParameterUse =
 			"Wrong parameter usage at line {0}. Use format [feature].[specification].[parametername] = [parametervalue].";
 		public const string MustOnlyContainSameParameterOnce = "Parameter '{0}' declared twice at line {1}.";
+		public const string MustDeclareSpecificationBeforeParameter = "Declare specification for feature '{0}' before setting parameter at line {1}.";
 
 		private readonly IFileReader _fileReader;
 		private readonly ISpecificationMappings _specificationMappings;
@@ -127,7 +128,15 @@ namespace Toggle.Net.Providers.TextFile
 					var paramValue = rightOfEqualSign;
 					try
 					{
-						readFeatures[feature].AddParameter(specificationMappings[specification], paramName, paramValue);
+						Feature featureInstance;
+						if(readFeatures.TryGetValue(feature, out featureInstance))
+						{
+							featureInstance.AddParameter(specificationMappings[specification], paramName, paramValue);
+						}
+						else
+						{
+							exOutput.AppendLine(string.Format(MustDeclareSpecificationBeforeParameter, feature, rowNumber));
+						}
 					}
 					catch (ArgumentException)
 					{
