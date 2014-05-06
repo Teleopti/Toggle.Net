@@ -113,5 +113,21 @@ namespace Toggle.Net.Tests.TextFile
 			).ToString()
 			.Should().Contain(string.Format(RandomSpecification.MustHaveDeclaredPercent, "someflag"));
 		}
+
+
+		[Test]
+		public void ShouldThrowIfOutOfRange([Values("-1000", "-1", "101", "1000")] string percent)
+		{
+			var content = new[]
+			{
+				"someflag=random",
+				"someflag.random." + RandomSpecification.Percent + "=" + percent
+			};
+
+			Assert.Throws<IncorrectTextFileException>(() =>
+				new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+			).ToString()
+			.Should().Contain(string.Format(RandomSpecification.MustBeBetween0And100, "someflag"));
+		}
 	}
 }

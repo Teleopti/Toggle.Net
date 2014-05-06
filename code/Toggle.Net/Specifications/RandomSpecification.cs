@@ -8,6 +8,7 @@ namespace Toggle.Net.Specifications
 		public const string Percent = "percent";
 		public const string MustHaveDeclaredPercent = "Missing RandomSpecification parameter '" + Percent + "' for feature '{0}'.";
 		public const string MustDeclaredPercentAsInt = "RandomSpecification parameter '" + Percent + "' for feature '{0}' must be declared as an int.";
+		public const string MustBeBetween0And100 = "RandomSpecification parameter '" + Percent + "' for feature '{0}' must be between 0 and 100.";
 
 		public bool IsEnabled(string currentUser, IDictionary<string, string> parameters)
 		{
@@ -25,10 +26,14 @@ namespace Toggle.Net.Specifications
 			{
 				throw new InvalidOperationException(string.Format(MustHaveDeclaredPercent, toggleName));
 			}
-			int temp;
-			if (!int.TryParse(parameterValue, out temp))
+			int percent;
+			if (!int.TryParse(parameterValue, out percent))
 			{
 				throw new InvalidOperationException(string.Format(MustDeclaredPercentAsInt, toggleName));
+			}
+			if (percent < 0 || percent > 100)
+			{
+				throw new InvalidOperationException(string.Format(MustBeBetween0And100, toggleName));
 			}
 		}
 	}
