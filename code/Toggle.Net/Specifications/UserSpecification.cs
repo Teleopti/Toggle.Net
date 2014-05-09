@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Toggle.Net.Specifications
@@ -23,11 +24,11 @@ namespace Toggle.Net.Specifications
 
 			if (currentUserContainsDelimiter)
 			{
-				return parameterValues.Equals(currentUser);
+				return parameterValues.Equals(currentUser, StringComparison.OrdinalIgnoreCase);
 			}
 
 			var values = parameterValues.Split(delimiter);
-			return values.Any(value => value.Trim().Equals(currentUser));
+			return values.Any(value => value.Trim().Equals(currentUser, StringComparison.OrdinalIgnoreCase));
 		}
 
 		public void Validate(string toggleName, IDictionary<string, string> parameters)

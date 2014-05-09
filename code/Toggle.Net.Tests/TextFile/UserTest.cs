@@ -108,6 +108,38 @@ namespace Toggle.Net.Tests.TextFile
 		}
 
 		[Test]
+		public void ShouldNotBeCaseSensitive()
+		{
+			var content = new[]
+			{
+				"someflag=user",
+				"someflag.user." + UserSpecification.Ids + "=roger"
+			};
+			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+				.SetUserProvider(new UserProviderStub("ROGER"))
+				.Create();
+
+			toggleChecker.IsEnabled("someflag")
+				.Should().Be.True();
+		}
+
+		[Test]
+		public void ShouldNotBeCaseSensitiveWhenCurrentUserContainsComma()
+		{
+			var content = new[]
+			{
+				"someflag=user",
+				"someflag.user." + UserSpecification.Ids + "=roger,"
+			};
+			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+				.SetUserProvider(new UserProviderStub("ROGER,"))
+				.Create();
+
+			toggleChecker.IsEnabled("someflag")
+				.Should().Be.True();
+		}
+
+		[Test]
 		public void ShouldThrowIfMissingIdsValue()
 		{
 			var content = new[]
