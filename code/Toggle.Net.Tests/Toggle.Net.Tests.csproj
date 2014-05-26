@@ -62,6 +62,7 @@
     <Compile Include="TextFile\MultipleSpecificationTests.cs" />
     <Compile Include="TextFile\RemarkTest.cs" />
     <Compile Include="TextFile\SimpleIntegrationTest.cs" />
+    <Compile Include="TextFile\WithParameters\ParameterShortSyntaxTest.cs" />
     <Compile Include="TextFile\WithParameters\SingleParameterTest.cs" />
     <Compile Include="TextFile\TrueTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,6 +13,9 @@ namespace Toggle.Net.Providers.TextFile
 	/// [feature]=[specification]
 	/// [feature].[specification].[param]=[value]
 	/// 
+	/// It's also possible to use shorter syntax for specifications with one parameter
+	/// [feature].[specification].[param]=[value]
+	/// 
 	/// To remark, use "#" sign.
 	/// 
 	/// <example>
@@ -33,7 +36,6 @@ namespace Toggle.Net.Providers.TextFile
 		public const string MustHaveTwoDotsIfParameterUse =
 			"Wrong parameter usage at line {0}. Use format [feature].[specification].[parametername] = [parametervalue].";
 		public const string MustOnlyContainSameParameterOnce = "Parameter '{0}' declared twice at line {1}.";
-		public const string MustDeclareSpecificationBeforeParameter = "Declare specification for feature '{0}' before setting parameter at line {1}.";
 
 		private readonly IFileReader _fileReader;
 		private readonly ISpecificationMappings _specificationMappings;
@@ -101,41 +103,32 @@ namespace Toggle.Net.Providers.TextFile
 														StringBuilder exOutput)
 		{
 			var splitLeftByDots = leftOfEqualSign.Split('.');
+			string toggleName;
+			string specificationName;
+
 			switch (splitLeftByDots.Length)
 			{
 				case 1:
-					IToggleSpecification foundSpecification;
-					if (specificationMappings.TryGetValue(rightOfEqualSign, out foundSpecification))
-					{
-						if (readFeatures.ContainsKey(leftOfEqualSign))
-						{
-							readFeatures[leftOfEqualSign].AddSpecification(foundSpecification);
-						}
-						else
-						{
-							readFeatures.Add(leftOfEqualSign, new Feature(foundSpecification));
-						}
-					}
-					else
-					{
-						exOutput.AppendLine(string.Format(MustHaveValidSpecification, rightOfEqualSign, rowNumber));
-					}
+					toggleName = leftOfEqualSign;
+					specificationName = rightOfEqualSign;
+
+					addSpecificationToFeature(readFeatures, specificationMappings, rowNumber, exOutput, specificationName, toggleName);
 					break;
 				case 3:
-					var feature = splitLeftByDots[0];
-					var specification = splitLeftByDots[1];
+					toggleName = splitLeftByDots[0];
+					specificationName = splitLeftByDots[1];
 					var paramName = splitLeftByDots[2].Trim();
 					var paramValue = rightOfEqualSign;
 					try
 					{
-						Feature featureInstance;
-						if(readFeatures.TryGetValue(feature, out featureInstance))
+						Feature feature;
+						if (!readFeatures.TryGetValue(toggleName, out feature))
 						{
-							featureInstance.AddParameter(specificationMappings[specification], paramName, paramValue);
+							feature = addSpecificationToFeature(readFeatures, specificationMappings, rowNumber, exOutput, specificationName, toggleName);
 						}
-						else
+						if (feature != null)
 						{
-							exOutput.AppendLine(string.Format(MustDeclareSpecificationBeforeParameter, feature, rowNumber));
+							feature.AddParameter(specificationMappings[specificationName], paramName, paramValue);
 						}
 					}
 					catch (ArgumentException)
@@ -147,6 +140,30 @@ namespace Toggle.Net.Providers.TextFile
 					exOutput.AppendLine(string.Format(MustHaveTwoDotsIfParameterUse, rowNumber));
 					break;
 			}
+		}
+
+		private static Feature addSpecificationToFeature(IDictionary<string, Feature> readFeatures, IDictionary<string, IToggleSpecification> specificationMappings, int rowNumber,
+			StringBuilder exOutput, string specificationName, string toggleName)
+		{
+			IToggleSpecification foundSpecification;
+			Feature feature=null;
+			if (specificationMappings.TryGetValue(specificationName, out foundSpecification))
+			{
+				if (readFeatures.TryGetValue(toggleName, out feature))
+				{
+					feature.AddSpecification(foundSpecification);
+				}
+				else
+				{
+					feature = new Feature(foundSpecification);
+					readFeatures.Add(toggleName, feature);
+				}
+			}
+			else
+			{
+				exOutput.AppendLine(string.Format(MustHaveValidSpecification, specificationName, rowNumber));
+			}
+			return feature;
 		}
 	}
 }
