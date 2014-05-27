@@ -52,6 +52,7 @@
     <Compile Include="TextFile\FalseTest.cs" />
     <Compile Include="Stubs\FileReaderStub.cs" />
     <Compile Include="TextFile\IncorrectTextTest.cs" />
+    <Compile Include="TextFile\NonExistingFeatureTest.cs" />
     <Compile Include="TextFile\RandomTest.cs" />
     <Compile Include="TextFile\UniqueSpecificationNameTest.cs" />
     <Compile Include="TextFile\UserTest.cs" />
