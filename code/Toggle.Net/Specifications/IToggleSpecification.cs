@@ -6,7 +6,7 @@ namespace Toggle.Net.Specifications
 	/// <summary>
 	/// Decides if a <see cref="Feature"/> is enabled ot not.
 	/// Implementation is shared between diffent features,
-	/// so make sure you don't keep global state.
+	/// so make sure you don't keep state that cannot be shared on this instance.
 	/// </summary>
 	public interface IToggleSpecification
 	{
@@ -19,8 +19,7 @@ namespace Toggle.Net.Specifications
 		bool IsEnabled(string currentUser, IDictionary<string, string> parameters);
 
 		/// <summary>
-		/// Called once at startup to see if owner <see cref="Feature"/> parameter values
-		/// is valid for this specification.
+		/// Called at startup with parameters for every <see cref="Feature"/> using this specification.
 		/// If not valid, throw a <see cref="InvalidSpecificationParameterException"/>
 		/// with suitable message.
 		/// </summary>
