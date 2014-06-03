@@ -1,6 +1,8 @@
 @echo off
 SET SRCDIR=%~dp0
-set SRCDIR=%SRCDIR:~0,-14%
+set SRCDIR=%SRCDIR:~0,-22%
+echo %SRCDIR%
+pause
 set nugetfolder="%SRCDIR%\code\.nuget"
 set packageFolder="%SRCDIR%\code\packages"
 set msbuild="%windir%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"
