@@ -176,3 +176,6 @@ FakesAssemblies/
 
 # nuget deploy directory
 Deploy/
+
+# build scripts
+nunit.xml
