@@ -26,9 +26,9 @@
 	
 	<Target Name="RunTests">
 		<PropertyGroup>
-			<NunitXmlFile>"$(RootFolder)\nunit.xml"</NunitXmlFile>
+			<NunitXmlFile>$(RootFolder)\nunit.xml</NunitXmlFile>
 		</PropertyGroup>
 	
-		<exec Command="$(NunitRunnder) $(SolutionFile) /xml:$(NunitXmlFile)" />
+		<exec Command="$(NunitRunnder) %22$(SolutionFile)%22 /xml:%22$(NunitXmlFile)%22" />
 	</Target>
 </Project>
