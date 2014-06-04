@@ -3,7 +3,7 @@
 <Project DefaultTargets="BuildAndTest" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
 	<PropertyGroup>
 		<RootFolder Condition="'$(RootFolder)'==''">$(CCNetWorkingDirectory)</RootFolder>
-		<SolutionFile>$(RootFolder)\code\Toggle.Net.sln</SolutionFile>
+		<SolutionFile>$(RootFolder)\code\toggle.net.sln</SolutionFile>
 		<NugetPackageFolder>$(RootFolder)\code\packages</NugetPackageFolder>
 		<NunitRunnder>"$(NugetPackageFolder)\NUnit.Runners.2.6.3\tools\nunit-console.exe"</NunitRunnder>
 	</PropertyGroup>
@@ -17,7 +17,7 @@
 			<NugetPackageFolder>"$(RootFolder)\code\packages"</NugetPackageFolder>
 			<NugetExe>"$(RootFolder)\code\.nuget\nuget.exe"</NugetExe>
 		</PropertyGroup>
-		<exec Command="$(NugetExe) install NUnit.Runners -v 2.6.3 -o %22$(NugetPackageFolder)%22" />
+		<exec Command="$(NugetExe) install NUnit.Runners -v 2.6.3 -o $(NugetPackageFolder)" />
 	</Target>
 	
 	<Target Name="Compile" DependsOnTargets="InstallNugetDependencies">
@@ -26,7 +26,7 @@
 	
 	<Target Name="RunTests">
 		<PropertyGroup>
-			<NunitXmlFile>$(RootFolder)\nunit.xml</NunitXmlFile>
+			<NunitXmlFile>"$(RootFolder)\nunit.xml"</NunitXmlFile>
 		</PropertyGroup>
 	
 		<exec Command="$(NunitRunnder) $(SolutionFile) /xml:$(NunitXmlFile)" />
