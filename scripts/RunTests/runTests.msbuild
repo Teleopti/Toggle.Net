@@ -2,7 +2,7 @@
 
 <Project DefaultTargets="BuildAndTest" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
 	<PropertyGroup>
-		<RootFolder Condition="'$(RootFolder)'==''">..\..</RootFolder>
+		<RootFolder Condition="'$(RootFolder)'==''">$(CCNetWorkingDirectory)</RootFolder>
 		<SolutionFile>$(RootFolder)\code\Toggle.Net.sln</SolutionFile>
 		<NugetPackageFolder>$(RootFolder)\code\packages</NugetPackageFolder>
 		<NunitRunnder>"$(NugetPackageFolder)\NUnit.Runners.2.6.3\tools\nunit-console.exe"</NunitRunnder>

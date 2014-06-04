@@ -6,7 +6,7 @@ set nugetexe=%srcdir%\code\.nuget\nuget.exe
 set msbuild="%windir%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"
 
 %nugetexe% install  -o %nugetpackages%
-%msbuild% runtests.msbuild
+%msbuild% runtests.msbuild /p:RootFolder=..\..
 
 echo.
 pause
