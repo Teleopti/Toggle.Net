@@ -13,9 +13,9 @@ namespace Toggle.Net.Tests.TextFile
 		{
 			var content = new[] { "someflag2" };
 			Assert.Throws<IncorrectTextFileException>(() =>
-					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+					new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProviderFactory.MustContainEqualSign, 1));
+				.Should().Contain(string.Format(FileParser.MustContainEqualSign, 1));
 		}
 
 		[Test]
@@ -23,9 +23,9 @@ namespace Toggle.Net.Tests.TextFile
 		{
 			var content = new[] { "someflag=true=true" };
 			Assert.Throws<IncorrectTextFileException>(() =>
-					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+					new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProviderFactory.MustOnlyContainOneEqualSign, 1));
+				.Should().Contain(string.Format(FileParser.MustOnlyContainOneEqualSign, 1));
 		}
 
 		[Test]
@@ -37,10 +37,10 @@ namespace Toggle.Net.Tests.TextFile
 				"multipleEqual=false=true"
 			};
 			var ex = Assert.Throws<IncorrectTextFileException>(() =>
-					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+					new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 				).ToString();
-			ex.Should().Contain(string.Format(FileProviderFactory.MustContainEqualSign, 1));
-			ex.Should().Contain(string.Format(FileProviderFactory.MustOnlyContainOneEqualSign, 2));
+			ex.Should().Contain(string.Format(FileParser.MustContainEqualSign, 1));
+			ex.Should().Contain(string.Format(FileParser.MustOnlyContainOneEqualSign, 2));
 		}
 
 		[Test]
@@ -48,9 +48,9 @@ namespace Toggle.Net.Tests.TextFile
 		{
 			var content = new[] { "someflag=maybe" };
 			Assert.Throws<IncorrectTextFileException>(() =>
-					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+					new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProviderFactory.MustHaveValidSpecification, "maybe", 1));
+				.Should().Contain(string.Format(FileParser.MustHaveValidSpecification, "maybe", 1));
 		}
 	}
 }

@@ -12,7 +12,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldFindSpecificationWithWrongCasing()
 		{
 			var content = new[] { "someflag=TrUE" };
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -21,7 +21,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldFindToggleWithWrongCasing()
 		{
 			var content = new[] { "SOMEfLAg=true" };
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -30,7 +30,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldFindUntrimmedToggle()
 		{
 			var content = new[] { "   someflag					  =true" };
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
@@ -39,7 +39,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldFindUntrimmedSpecification()
 		{
 			var content = new[] { "someflag=         true		  " };
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}

@@ -17,7 +17,7 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 			};
 			var mappings = new DefaultSpecificationMappings();
 			mappings.AddMapping("parameterspecification", new SpecificationWithParameter());
-			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
+			var fileProvider = new FileParser(new FileReaderStub(content), mappings);
 			var toggleChecker = new ToggleConfiguration(fileProvider).Create();
 
 			toggleChecker.IsEnabled("someflag")
@@ -29,9 +29,9 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 		{
 			var content = new[] { "someflag.nope.nope=true" };
 			Assert.Throws<IncorrectTextFileException>(() =>
-					new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+					new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProviderFactory.MustHaveValidSpecification, "nope", 1));
+				.Should().Contain(string.Format(FileParser.MustHaveValidSpecification, "nope", 1));
 		}
 	}
 }

@@ -17,7 +17,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=random",
 				"someflag.random." + RandomSpecification.Percent + "=100"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("something"))
 				.Create();
 
@@ -33,7 +33,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=random",
 				"someflag.random." + RandomSpecification.Percent + "=0"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("something"))
 				.Create();
 
@@ -49,7 +49,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=random",
 				"someflag.random." + RandomSpecification.Percent + "=50"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderRandom())
 				.Create();
 
@@ -73,7 +73,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=random",
 				"someflag.random." + RandomSpecification.Percent + "=50"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("something"))
 				.Create();
 
@@ -95,7 +95,7 @@ namespace Toggle.Net.Tests.TextFile
 			};
 
 			Assert.Throws<IncorrectTextFileException>(() =>
-				new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+				new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 			).ToString()
 			.Should().Contain(string.Format(RandomSpecification.MustDeclaredPercentAsInt, "someflag"));
 		}
@@ -109,7 +109,7 @@ namespace Toggle.Net.Tests.TextFile
 			};
 
 			Assert.Throws<IncorrectTextFileException>(() =>
-				new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+				new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 			).ToString()
 			.Should().Contain(string.Format(RandomSpecification.MustHaveDeclaredPercent, "someflag"));
 		}
@@ -125,7 +125,7 @@ namespace Toggle.Net.Tests.TextFile
 			};
 
 			Assert.Throws<IncorrectTextFileException>(() =>
-				new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+				new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 			).ToString()
 			.Should().Contain(string.Format(RandomSpecification.MustBeBetween0And100, "someflag"));
 		}

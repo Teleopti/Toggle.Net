@@ -28,7 +28,7 @@ namespace Toggle.Net.Providers.TextFile
 	/// TheThing.myspecification.MyOtherParam = 13
 	/// </example>
 	/// </summary>
-	public class FileProviderFactory : IFeatureProviderFactory
+	public class FileParser : IFeatureProviderFactory
 	{
 		public const string MustContainEqualSign = "Missing equal sign at line {0}.";
 		public const string MustOnlyContainOneEqualSign = "More than one equal sign at line {0}.";
@@ -40,7 +40,7 @@ namespace Toggle.Net.Providers.TextFile
 		private readonly IFileReader _fileReader;
 		private readonly ISpecificationMappings _specificationMappings;
 
-		public FileProviderFactory(IFileReader fileReader, ISpecificationMappings specificationMappings)
+		public FileParser(IFileReader fileReader, ISpecificationMappings specificationMappings)
 		{
 			_fileReader = fileReader;
 			_specificationMappings = specificationMappings;

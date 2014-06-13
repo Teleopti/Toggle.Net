@@ -17,7 +17,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=user",
 				"someflag.user." + UserSpecification.Ids + "=10"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("10"))
 				.Create();
 
@@ -33,7 +33,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=user",
 				"someflag.user." + UserSpecification.Ids + "=nope"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("10"))
 				.Create();
 
@@ -49,7 +49,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=user",
 				"someflag.user." + UserSpecification.Ids + "=1,2,3,4"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("2"))
 				.Create();
 
@@ -66,7 +66,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=user",
 				"someflag.user." + UserSpecification.Ids + " =   1, 2	,  3 ,4  "
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("2"))
 				.Create();
 
@@ -82,7 +82,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=user",
 				"someflag.user." + UserSpecification.Ids + "=1,2,3,4"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("2,"))
 				.Create();
 
@@ -99,7 +99,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=user",
 				"someflag.user." + UserSpecification.Ids + "=  1,2,3,4  "
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("1,2,3,4"))
 				.Create();
 
@@ -115,7 +115,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=user",
 				"someflag.user." + UserSpecification.Ids + "=roger"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("ROGER"))
 				.Create();
 
@@ -131,7 +131,7 @@ namespace Toggle.Net.Tests.TextFile
 				"someflag=user",
 				"someflag.user." + UserSpecification.Ids + "=roger,"
 			};
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("ROGER,"))
 				.Create();
 
@@ -148,7 +148,7 @@ namespace Toggle.Net.Tests.TextFile
 			};
 
 			Assert.Throws<IncorrectTextFileException>(() =>
-				new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
+				new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create()
 			).ToString()
 			.Should().Contain(string.Format(UserSpecification.MustHaveDeclaredIds, "someflag"));
 		}

@@ -20,7 +20,7 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 			};
 			var mappings = new DefaultSpecificationMappings();
 			mappings.AddMapping("parameterspecification", new SpecificationWithParameter());
-			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
+			var fileProvider = new FileParser(new FileReaderStub(content), mappings);
 			var toggleChecker = new ToggleConfiguration(fileProvider).Create();
 			toggleChecker.IsEnabled("trueFlag")
 				.Should().Be.True();
@@ -38,7 +38,7 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 			};
 			var mappings = new DefaultSpecificationMappings();
 			mappings.AddMapping("parameterspecification", new SpecificationWithParameter());
-			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
+			var fileProvider = new FileParser(new FileReaderStub(content), mappings);
 			var toggleChecker = new ToggleConfiguration(fileProvider).Create();
 			toggleChecker.IsEnabled("falseFlag")
 				.Should().Be.False();

@@ -18,12 +18,12 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 			};
 			var mappings = new DefaultSpecificationMappings();
 			mappings.AddMapping("parameterSpecification", new SpecificationWithParameter());
-			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
+			var fileProvider = new FileParser(new FileReaderStub(content), mappings);
 
 			Assert.Throws<IncorrectTextFileException>(() =>
 				new ToggleConfiguration(fileProvider).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProviderFactory.MustHaveTwoDotsIfParameterUse, 2));
+				.Should().Contain(string.Format(FileParser.MustHaveTwoDotsIfParameterUse, 2));
 		}
 
 		[Test]
@@ -36,12 +36,12 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 			};
 			var mappings = new DefaultSpecificationMappings();
 			mappings.AddMapping("parameterSpecification", new SpecificationWithParameter());
-			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
+			var fileProvider = new FileParser(new FileReaderStub(content), mappings);
 
 			Assert.Throws<IncorrectTextFileException>(() =>
 				new ToggleConfiguration(fileProvider).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProviderFactory.MustHaveTwoDotsIfParameterUse, 2));
+				.Should().Contain(string.Format(FileParser.MustHaveTwoDotsIfParameterUse, 2));
 		}
 
 		[Test]
@@ -55,12 +55,12 @@ namespace Toggle.Net.Tests.TextFile.WithParameters
 			};
 			var mappings = new DefaultSpecificationMappings();
 			mappings.AddMapping("parameterSpecification", new SpecificationWithParameter());
-			var fileProvider = new FileProviderFactory(new FileReaderStub(content), mappings);
+			var fileProvider = new FileParser(new FileReaderStub(content), mappings);
 
 			Assert.Throws<IncorrectTextFileException>(() =>
 				new ToggleConfiguration(fileProvider).Create()
 				).ToString()
-				.Should().Contain(string.Format(FileProviderFactory.MustOnlyContainSameParameterOnce, SpecificationWithParameter.ParameterName, 3));
+				.Should().Contain(string.Format(FileParser.MustOnlyContainSameParameterOnce, SpecificationWithParameter.ParameterName, 3));
 		}
 	}
 }

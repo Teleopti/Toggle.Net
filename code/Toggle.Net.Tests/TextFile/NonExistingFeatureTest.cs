@@ -12,7 +12,7 @@ namespace Toggle.Net.Tests.TextFile
 		[Test]
 		public void ShouldDefaultToFalse()
 		{
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(new string[0]), new DefaultSpecificationMappings())).Create();
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(new string[0]), new DefaultSpecificationMappings())).Create();
 			toggleChecker.IsEnabled("sometoggle")
 				.Should().Be.False();
 		}
@@ -20,7 +20,7 @@ namespace Toggle.Net.Tests.TextFile
 		[Test]
 		public void ShouldBeAbleToChangeDefaultSpecification()
 		{
-			var toggleChecker = new ToggleConfiguration(new FileProviderFactory(new FileReaderStub(new string[0]), new DefaultSpecificationMappings()))
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(new string[0]), new DefaultSpecificationMappings()))
 				.SetDefaultSpecification(new TrueSpecification())
 				.Create();
 			toggleChecker.IsEnabled("sometoggle")
