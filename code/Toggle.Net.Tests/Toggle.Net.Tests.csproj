@@ -54,6 +54,7 @@
     <Compile Include="TextFile\IncorrectTextTest.cs" />
     <Compile Include="TextFile\NonExistingFeatureTest.cs" />
     <Compile Include="TextFile\RandomTest.cs" />
+    <Compile Include="TextFile\RegExTest.cs" />
     <Compile Include="TextFile\UniqueSpecificationNameTest.cs" />
     <Compile Include="TextFile\UserTest.cs" />
     <Compile Include="TextFile\WithParameters\EdgeCasesTest.cs" />
