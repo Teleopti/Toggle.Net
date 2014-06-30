@@ -10,9 +10,9 @@ namespace Toggle.Net.Specifications
 
 		private readonly Regex _regex;
 
-		public RegExSpecification(string regex)
+		public RegExSpecification(Regex regex)
 		{
-			_regex = new Regex(regex);
+			_regex = regex;
 		}
 
 		public bool IsEnabled(string currentUser, IDictionary<string, string> parameters)
