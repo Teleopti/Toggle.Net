@@ -36,5 +36,17 @@ namespace Toggle.Net.Tests.TextFile
 			toggleChecker.IsEnabled("someflag")
 				.Should().Be.True();
 		}
+
+		[Test]
+		public void ShouldAllowCommentingInsideARow()
+		{
+			var content = new[]
+			{
+				"someflag=true #this should be possible"
+			};
+			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings())).Create();
+			toggleChecker.IsEnabled("someflag")
+				.Should().Be.True();
+		}
 	}
 }

@@ -74,9 +74,11 @@ namespace Toggle.Net.Providers.TextFile
 			{
 				var row = content[index];
 				var rowNumber = index + 1;
-				var splitByEqualSign = row.Split('=');
+				var indexOfCommentSign = row.IndexOf("#", StringComparison.OrdinalIgnoreCase);
+				var rowWithoutComments = indexOfCommentSign > -1 ? row.Remove(indexOfCommentSign) : row;
+				var splitByEqualSign = rowWithoutComments.Split('=');
 				var leftOfEqualSign = splitByEqualSign[0].Trim();
-				if (leftOfEqualSign == string.Empty || leftOfEqualSign.StartsWith("#"))
+				if (leftOfEqualSign == string.Empty)
 					continue;
 				switch (splitByEqualSign.Length)
 				{
