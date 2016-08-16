@@ -24,7 +24,6 @@ namespace Toggle.Net.Tests.TextFile
 			mappings.AddMapping("myRegex", new RegExSpecification(new Regex("^" + wordToMatch + "$")));
 
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), mappings))
-				.SetUserProvider(new UserProviderStub("sometoggle"))
 				.Create();
 
 			toggleChecker.IsEnabled("sometoggle")
@@ -45,7 +44,6 @@ namespace Toggle.Net.Tests.TextFile
 			mappings.AddMapping("myRegex", new RegExSpecification(new Regex("^somethingelse$")));
 
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), mappings))
-				.SetUserProvider(new UserProviderStub("sometoggle"))
 				.Create();
 
 			toggleChecker.IsEnabled("sometoggle")
@@ -66,7 +64,7 @@ namespace Toggle.Net.Tests.TextFile
 
 			Assert.Throws<IncorrectTextFileException>(() => 
 				new ToggleConfiguration(new FileParser(new FileReaderStub(content), mappings))
-				.SetUserProvider(new UserProviderStub("sometoggle")).Create()).ToString()
+				.Create()).ToString()
 			.Should().Contain(string.Format(RegExSpecification.MustDeclareRegexPattern, "sometoggle"));
 		}
 	}
