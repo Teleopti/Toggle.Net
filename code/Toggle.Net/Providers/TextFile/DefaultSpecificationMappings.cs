@@ -11,11 +11,13 @@ namespace Toggle.Net.Providers.TextFile
 
 		public DefaultSpecificationMappings()
 		{
-			_mappings = new Dictionary<string, IToggleSpecification>(StringComparer.OrdinalIgnoreCase);
-			_mappings["true"] = new TrueSpecification();
-			_mappings["false"] = new FalseSpecification();
-			_mappings["user"] = new UserSpecification();
-			_mappings["random"] = new RandomSpecification();
+			_mappings = new Dictionary<string, IToggleSpecification>(StringComparer.OrdinalIgnoreCase)
+			{
+				["true"] = new TrueSpecification(),
+				["false"] = new FalseSpecification(),
+				["user"] = new UserSpecification(),
+				["random"] = new RandomSpecification()
+			};
 		}
 
 		public IDictionary<string, IToggleSpecification> NameSpecificationMappings()

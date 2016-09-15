@@ -131,10 +131,7 @@ namespace Toggle.Net.Providers.TextFile
 						{
 							feature = addSpecificationToFeature(readFeatures, specificationMappings, rowNumber, exOutput, specificationName, toggleName);
 						}
-						if (feature != null)
-						{
-							feature.AddParameter(specificationMappings[specificationName], paramName, paramValue);
-						}
+						feature?.AddParameter(specificationMappings[specificationName], paramName, paramValue);
 					}
 					catch (ArgumentException)
 					{

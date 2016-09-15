@@ -24,7 +24,7 @@ namespace Toggle.Net.Internal
 		public void AddSpecification(IToggleSpecification specification)
 		{
 			if(specification==null)
-				throw new ArgumentNullException("specification");
+				throw new ArgumentNullException(nameof(specification));
 			_specificationData.Add(specification, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase));
 		}
 

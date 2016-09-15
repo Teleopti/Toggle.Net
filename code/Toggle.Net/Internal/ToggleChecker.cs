@@ -22,9 +22,7 @@ namespace Toggle.Net.Internal
 		{
 			var feature = _featureProvider.Get(toggleName);
 			var currentUser = _userProvider.CurrentUser();
-			return feature == null ? 
-					_defaulToggleSpecification.IsEnabled(currentUser, new Dictionary<string, string>()) : 
-					feature.IsEnabled(currentUser);
+			return feature?.IsEnabled(currentUser) ?? _defaulToggleSpecification.IsEnabled(currentUser, new Dictionary<string, string>());
 		}
 	}
 }
