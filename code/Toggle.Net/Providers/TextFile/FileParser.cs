@@ -36,6 +36,7 @@ namespace Toggle.Net.Providers.TextFile
 		public const string MustHaveTwoDotsIfParameterUse =
 			"Wrong parameter usage at line {0}. Use format [feature].[specification].[parametername] = [parametervalue].";
 		public const string MustOnlyContainSameParameterOnce = "Parameter '{0}' declared twice at line {1}.";
+		public const string MustOnlyBeDeclaredOnce = "Feature '{0}' is declared twice at line {1}. This is not allowed when you've set ThrowIfFeatureIsDeclaredTwice to true.";
 
 		private readonly IFileReader _fileReader;
 		private readonly ISpecificationMappings _specificationMappings;
@@ -45,6 +46,8 @@ namespace Toggle.Net.Providers.TextFile
 			_fileReader = fileReader;
 			_specificationMappings = specificationMappings;
 		}
+
+		public bool ThrowIfFeatureIsDeclaredTwice { get; set; }
 
 		public IFeatureProvider Create()
 		{
@@ -97,7 +100,7 @@ namespace Toggle.Net.Providers.TextFile
 			return readFeatures;
 		}
 
-		private static void parseRow(IDictionary<string, Feature> readFeatures,
+		private void parseRow(IDictionary<string, Feature> readFeatures,
 														IDictionary<string, IToggleSpecification> specificationMappings,
 														string leftOfEqualSign, 
 														string rightOfEqualSign, 
@@ -144,7 +147,7 @@ namespace Toggle.Net.Providers.TextFile
 			}
 		}
 
-		private static Feature addSpecificationToFeature(IDictionary<string, Feature> readFeatures, IDictionary<string, IToggleSpecification> specificationMappings, int rowNumber,
+		private Feature addSpecificationToFeature(IDictionary<string, Feature> readFeatures, IDictionary<string, IToggleSpecification> specificationMappings, int rowNumber,
 			StringBuilder exOutput, string specificationName, string toggleName)
 		{
 			IToggleSpecification foundSpecification;
@@ -153,7 +156,14 @@ namespace Toggle.Net.Providers.TextFile
 			{
 				if (readFeatures.TryGetValue(toggleName, out feature))
 				{
-					feature.AddSpecification(foundSpecification);
+					if (ThrowIfFeatureIsDeclaredTwice)
+					{
+						exOutput.AppendLine(string.Format(MustOnlyBeDeclaredOnce, toggleName, rowNumber));
+					}
+					else
+					{
+						feature.AddSpecification(foundSpecification);
+					}
 				}
 				else
 				{
