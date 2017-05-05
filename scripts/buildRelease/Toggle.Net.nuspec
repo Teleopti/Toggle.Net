@@ -4,7 +4,7 @@
     <id>Toggle.Net</id>
     <authors>Roger Kratz</authors>
 	<version>$version$</version>
-    <description>Config toggles for .net</description>
+    <description>Feature flags for .net</description>
 	<projectUrl>https://github.com/Teleopti/Toggle.Net</projectUrl>
 	<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
 	<tags>flag, toggle, bit, config, feature, branch</tags>
