@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Toggle.Net.Internal;
 using Toggle.Net.Specifications;
@@ -37,6 +38,7 @@ namespace Toggle.Net.Providers.TextFile
 			"Wrong parameter usage at line {0}. Use format [feature].[specification].[parametername] = [parametervalue].";
 		public const string MustOnlyContainSameParameterOnce = "Parameter '{0}' declared twice at line {1}.";
 		public const string MustOnlyBeDeclaredOnce = "Feature '{0}' is declared twice at line {1}. This is not allowed when you've set ThrowIfFeatureIsDeclaredTwice to true.";
+		public const string NotAllowedFeature = "Feature '{0}' is not in AllowedFeatures collection.";
 
 		private readonly IFileReader _fileReader;
 		private readonly ISpecificationMappings _specificationMappings;
@@ -48,6 +50,8 @@ namespace Toggle.Net.Providers.TextFile
 		}
 
 		public bool ThrowIfFeatureIsDeclaredTwice { get; set; }
+
+		public IEnumerable<string> AllowedFeatures { get; set; }
 
 		public IFeatureProvider Create()
 		{
@@ -147,6 +151,7 @@ namespace Toggle.Net.Providers.TextFile
 		private Feature addSpecificationToFeature(IDictionary<string, Feature> readFeatures, IDictionary<string, IToggleSpecification> specificationMappings, int rowNumber,
 			StringBuilder exOutput, string specificationName, string toggleName)
 		{
+			makeSureToggleNameIsAllowed(exOutput, toggleName);
 			IToggleSpecification foundSpecification;
 			Feature feature=null;
 			if (specificationMappings.TryGetValue(specificationName, out foundSpecification))
@@ -173,6 +178,14 @@ namespace Toggle.Net.Providers.TextFile
 				exOutput.AppendLine(string.Format(MustHaveValidSpecification, specificationName, rowNumber));
 			}
 			return feature;
+		}
+
+		private void makeSureToggleNameIsAllowed(StringBuilder exOutput, string toggleName)
+		{
+			if (!AllowedFeatures.Any(x => string.Equals(x.Trim(), toggleName, StringComparison.CurrentCultureIgnoreCase)))
+			{
+				exOutput.AppendLine(string.Format(NotAllowedFeature, toggleName));
+			}
 		}
 	}
 }

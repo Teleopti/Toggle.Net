@@ -49,6 +49,7 @@
     <Compile Include="Stubs\SpecificationWithParameter.cs" />
     <Compile Include="Stubs\UserProviderRandom.cs" />
     <Compile Include="Stubs\UserProviderStub.cs" />
+    <Compile Include="TextFile\AllowedFeaturesTest.cs" />
     <Compile Include="TextFile\EdgeCasesTest.cs" />
     <Compile Include="TextFile\FalseTest.cs" />
     <Compile Include="Stubs\FileReaderStub.cs" />
