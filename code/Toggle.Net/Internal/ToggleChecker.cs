@@ -8,13 +8,13 @@ namespace Toggle.Net.Internal
 	public class ToggleChecker : IToggleChecker
 	{
 		private readonly IFeatureProvider _featureProvider;
-		private readonly IToggleSpecification _defaulToggleSpecification;
+		private readonly IToggleSpecification _defaultToggleSpecification;
 		private readonly IUserProvider _userProvider;
 
-		internal ToggleChecker(IFeatureProvider featureProvider, IToggleSpecification defaulToggleSpecification, IUserProvider userProvider)
+		internal ToggleChecker(IFeatureProvider featureProvider, IToggleSpecification defaultToggleSpecification, IUserProvider userProvider)
 		{
 			_featureProvider = featureProvider;
-			_defaulToggleSpecification = defaulToggleSpecification;
+			_defaultToggleSpecification = defaultToggleSpecification;
 			_userProvider = userProvider;
 		}
 
@@ -22,7 +22,7 @@ namespace Toggle.Net.Internal
 		{
 			var feature = _featureProvider.Get(toggleName);
 			var currentUser = _userProvider.CurrentUser();
-			return feature?.IsEnabled(currentUser) ?? _defaulToggleSpecification.IsEnabled(currentUser, new Dictionary<string, string>());
+			return feature?.IsEnabled(currentUser) ?? _defaultToggleSpecification.IsEnabled(currentUser, new Dictionary<string, string>());
 		}
 	}
 }
