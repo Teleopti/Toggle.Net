@@ -53,7 +53,7 @@ namespace Toggle.Net.Tests.TextFile
         }
 
         [Test]
-        public void ShouldNotCareSpaces()
+        public void ShouldNotCareAboutSpaces()
         {
             var content = new[]
             {
