@@ -182,7 +182,7 @@ namespace Toggle.Net.Providers.TextFile
 
 		private void makeSureToggleNameIsAllowed(StringBuilder exOutput, string toggleName)
 		{
-			if (!AllowedFeatures.Any(x => string.Equals(x.Trim(), toggleName, StringComparison.CurrentCultureIgnoreCase)))
+			if (AllowedFeatures!=null && !AllowedFeatures.Any(x => string.Equals(x.Trim(), toggleName, StringComparison.CurrentCultureIgnoreCase)))
 			{
 				exOutput.AppendLine(string.Format(NotAllowedFeature, toggleName));
 			}
