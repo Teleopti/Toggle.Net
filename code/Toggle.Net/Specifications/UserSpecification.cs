@@ -12,15 +12,15 @@ namespace Toggle.Net.Specifications
 	/// </summary>
 	public class UserSpecification : IToggleSpecification
 	{
-		public const string Ids = "ids";
-		public const string MustHaveDeclaredIds = "Missing UserSpecification parameter '" + Ids + "' for feature '{0}'.";
+		public const string MustHaveDeclaredIds = "Missing UserSpecification parameter '" + idsParameter + "' for feature '{0}'.";
 
+		private const string idsParameter = "ids";
 		private const char delimiter = ',';
 
 		public bool IsEnabled(string currentUser, IDictionary<string, string> parameters)
 		{
 			var currentUserContainsDelimiter = currentUser.Contains(delimiter);
-			var parameterValues = parameters[Ids];
+			var parameterValues = parameters[idsParameter];
 
 			if (currentUserContainsDelimiter)
 			{
@@ -33,7 +33,7 @@ namespace Toggle.Net.Specifications
 
 		public void Validate(string toggleName, IDictionary<string, string> parameters)
 		{
-			if (!parameters.Keys.Contains(Ids))
+			if (!parameters.Keys.Contains(idsParameter))
 			{
 				throw new InvalidSpecificationParameterException(string.Format(MustHaveDeclaredIds, toggleName));
 			}

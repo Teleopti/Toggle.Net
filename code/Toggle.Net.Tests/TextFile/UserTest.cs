@@ -15,7 +15,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=user",
-				"someflag.user." + UserSpecification.Ids + "=10"
+				"someflag.user.ids=10"
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("10"))
@@ -31,7 +31,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=user",
-				"someflag.user." + UserSpecification.Ids + "=nope"
+				"someflag.user.ids=nope"
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("10"))
@@ -47,7 +47,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=user",
-				"someflag.user." + UserSpecification.Ids + "=1,2,3,4"
+				"someflag.user.ids=1,2,3,4"
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("2"))
@@ -64,7 +64,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=user",
-				"someflag.user." + UserSpecification.Ids + " =   1, 2	,  3 ,4  "
+				"someflag.user.ids =   1, 2	,  3 ,4  "
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("2"))
@@ -80,7 +80,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=user",
-				"someflag.user." + UserSpecification.Ids + "=1,2,3,4"
+				"someflag.user.ids=1,2,3,4"
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("2,"))
@@ -97,7 +97,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=user",
-				"someflag.user." + UserSpecification.Ids + "=  1,2,3,4  "
+				"someflag.user.ids=  1,2,3,4  "
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("1,2,3,4"))
@@ -113,7 +113,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=user",
-				"someflag.user." + UserSpecification.Ids + "=roger"
+				"someflag.user.ids=roger"
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("ROGER"))
@@ -129,7 +129,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=user",
-				"someflag.user." + UserSpecification.Ids + "=roger,"
+				"someflag.user.ids=roger,"
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("ROGER,"))
