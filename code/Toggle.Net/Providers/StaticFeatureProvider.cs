@@ -14,8 +14,7 @@ namespace Toggle.Net.Providers
 
 		public Feature Get(string toggleName)
 		{
-			Feature feature;
-			return _features.TryGetValue(toggleName, out feature) ?
+			return _features.TryGetValue(toggleName, out var feature) ?
 					feature :
 					null;
 		} 

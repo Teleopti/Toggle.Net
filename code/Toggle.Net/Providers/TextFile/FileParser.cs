@@ -130,8 +130,7 @@ namespace Toggle.Net.Providers.TextFile
 					var paramValue = rightOfEqualSign;
 					try
 					{
-						Feature feature;
-						if (!readFeatures.TryGetValue(toggleName, out feature))
+						if (!readFeatures.TryGetValue(toggleName, out var feature))
 						{
 							feature = addSpecificationToFeature(readFeatures, specificationMappings, rowNumber, exOutput, specificationName, toggleName);
 						}
@@ -152,9 +151,8 @@ namespace Toggle.Net.Providers.TextFile
 			StringBuilder exOutput, string specificationName, string toggleName)
 		{
 			makeSureToggleNameIsAllowed(exOutput, toggleName);
-			IToggleSpecification foundSpecification;
 			Feature feature=null;
-			if (specificationMappings.TryGetValue(specificationName, out foundSpecification))
+			if (specificationMappings.TryGetValue(specificationName, out var foundSpecification))
 			{
 				if (readFeatures.TryGetValue(toggleName, out feature))
 				{
