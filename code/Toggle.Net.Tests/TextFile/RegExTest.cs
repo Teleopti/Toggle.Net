@@ -18,7 +18,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"sometoggle=myRegex",
-				"sometoggle.myRegex." + RegExSpecification.RegExParameter + "=" + wordToMatch
+				"sometoggle.myRegex.pattern=" + wordToMatch
 			};
 			var mappings = new DefaultSpecificationMappings();
 			mappings.AddMapping("myRegex", new RegExSpecification(new Regex("^" + wordToMatch + "$")));
@@ -38,7 +38,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"sometoggle=myRegex",
-				"sometoggle.myRegex." + RegExSpecification.RegExParameter + "=" + wordToMatch
+				"sometoggle.myRegex.pattern=" + wordToMatch
 			};
 			var mappings = new DefaultSpecificationMappings();
 			mappings.AddMapping("myRegex", new RegExSpecification(new Regex("^somethingelse$")));
