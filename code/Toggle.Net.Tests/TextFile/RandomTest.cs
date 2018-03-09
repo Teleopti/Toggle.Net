@@ -15,7 +15,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=random",
-				"someflag.random." + RandomSpecification.Percent + "=100"
+				"someflag.random.percent=100"
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("something"))
@@ -31,7 +31,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=random",
-				"someflag.random." + RandomSpecification.Percent + "=0"
+				"someflag.random.percent=0"
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("something"))
@@ -47,7 +47,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=random",
-				"someflag.random." + RandomSpecification.Percent + "=50"
+				"someflag.random.percent=50"
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderRandom())
@@ -71,7 +71,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=random",
-				"someflag.random." + RandomSpecification.Percent + "=50"
+				"someflag.random.percent=50"
 			};
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(content), new DefaultSpecificationMappings()))
 				.SetUserProvider(new UserProviderStub("something"))
@@ -91,7 +91,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=random",
-				"someflag.random." + RandomSpecification.Percent + "=50%"
+				"someflag.random.percent=50%"
 			};
 
 			Assert.Throws<IncorrectTextFileException>(() =>
@@ -121,7 +121,7 @@ namespace Toggle.Net.Tests.TextFile
 			var content = new[]
 			{
 				"someflag=random",
-				"someflag.random." + RandomSpecification.Percent + "=" + percent
+				"someflag.random.percent=" + percent
 			};
 
 			Assert.Throws<IncorrectTextFileException>(() =>
