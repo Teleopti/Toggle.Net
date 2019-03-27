@@ -3,9 +3,9 @@
     <PackageId>Toggle.Net</PackageId>
     <Authors>Roger Kratz</Authors>
     <Description>Feature flags for .net</Description>
-    <projectUrl>https://github.com/Teleopti/Toggle.Net</projectUrl>
-    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
-    <tags>flag, toggle, bit, config, feature, branch</tags>
+    <PackageProjectUrl>https://github.com/Teleopti/Toggle.Net</PackageProjectUrl>
+    <PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageTags>flag, toggle, bit, config, feature, branch</PackageTags>
     
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <AssemblyOriginatorKeyFile>toggle.net.snk</AssemblyOriginatorKeyFile>
