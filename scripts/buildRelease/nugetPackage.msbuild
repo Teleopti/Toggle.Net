@@ -4,42 +4,17 @@
 		<SourceDir>$(MSBuildProjectDirectory)\..\..</SourceDir>
 		<NugetFolder>$([System.IO.Path]::Combine($(SourceDir)\code, ".nuget"))</NugetFolder>
 		<DeployFolder>$(MSBuildProjectDirectory)\Deploy</DeployFolder>
-		<PackageFolder>$(SourceDir)\code\Packages</PackageFolder>
-		<MSBuildCommunityTasksPath>$(PackageFolder)\MSBuildTasks.$(msbuildtasksVersion)\tools</MSBuildCommunityTasksPath>
 	</PropertyGroup>
-	<Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.targets" />
 	
-	<ItemGroup>
-		<AssemblyVersionFiles Include="$(SourceDir)\code\Toggle.Net\Properties\AssemblyInfo.cs"/>
-	</ItemGroup>
-
-	<Target Name="BuildRelease" DependsOnTargets="RunBuild;nuget;CopyNuget">
-		<RemoveDir Directories="$(TempDirectory)"/>
-	</Target>
-	
-	<Target Name="nuget" DependsOnTargets="MakeBuildDirectory;RunBuild">
-		<Exec Command="$(NugetFolder)\NuGet pack Toggle.Net.nuspec -o $(DeployFolder) -symbols -Prop Configuration=Release -Version $(Version)"
-				  WorkingDirectory="$(MSBuildProjectDirectory)"/>			  
-	</Target>
-	
-	<Target Name="CopyNuget">
+	<Target Name="BuildRelease" DependsOnTargets="ClearBuildDirectory">
+		<Exec Command="dotnet pack $(SourceDir)/code/Toggle.Net/Toggle.Net.csproj -c Release -o $(DeployFolder) /p:Version=$(Version)" />
 		<!-- copying nuget.exe to deplayfolder - to make easier manual push to nuget server -->
 		<Copy SourceFiles="$(NugetFolder)\NuGet.exe"
-				DestinationFolder="$(DeployFolder)"/>
-	</Target>
-
-	<Target Name="RunBuild" DependsOnTargets="UpdateAssemblyInfos">
-		<MSBuild Projects="$(SourceDir)\code\Toggle.Net.sln" Targets="Clean;Build" />
-	</Target>
-
-	<Target Name="MakeBuildDirectory">
-		<RemoveDir Directories="$(DeployFolder)" />
-		<MakeDir Directories="$(DeployFolder)" />
+				DestinationFolder="$(DeployFolder)"/>		
 	</Target>
 	
-	<Target Name="UpdateAssemblyInfos">
-		<FileUpdate Files="%(AssemblyVersionFiles.FullPath)"
-			Regex="(\d+)\.(\d+)\.(\d+)\.(\d+)"
-			ReplacementText="$(Version)"/>
+	<Target Name="ClearBuildDirectory">
+		<RemoveDir Directories="$(DeployFolder)" />
+		<MakeDir Directories="$(DeployFolder)" />
 	</Target>
 </Project>
