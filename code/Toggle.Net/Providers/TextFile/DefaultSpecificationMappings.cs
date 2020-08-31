@@ -13,8 +13,8 @@ namespace Toggle.Net.Providers.TextFile
 		{
 			_mappings = new Dictionary<string, IToggleSpecification>(StringComparer.OrdinalIgnoreCase)
 			{
-				["true"] = new TrueSpecification(),
-				["false"] = new FalseSpecification(),
+				["true"] = new BoolSpecification(true),
+				["false"] = new BoolSpecification(false),
 				["user"] = new UserSpecification(),
 				["random"] = new RandomSpecification()
 			};

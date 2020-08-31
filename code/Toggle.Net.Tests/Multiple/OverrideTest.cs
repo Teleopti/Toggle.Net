@@ -56,7 +56,7 @@ namespace Toggle.Net.Tests.Multiple
             };
             new ToggleConfiguration(new FileParser(new FileReaderStub(contentLowPrio), new DefaultSpecificationMappings()))
                 .AddFeatureProviderFactoryWithHigherPriority(new FileParser(new FileReaderStub(contentHighPrio), new DefaultSpecificationMappings()))
-                .SetDefaultSpecification(new TrueSpecification())
+                .SetDefaultSpecification(new BoolSpecification(true))
                 .Create().IsEnabled("someflag")
                 .Should().Be.True();
         }

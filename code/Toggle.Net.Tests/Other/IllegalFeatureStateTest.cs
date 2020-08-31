@@ -18,7 +18,7 @@ namespace Toggle.Net.Tests.Other
 		[Test]
 		public void ShouldNotAcceptNullWhenAddingFeature()
 		{
-			var feature = new Feature(new FalseSpecification());
+			var feature = new Feature(new BoolSpecification(false));
 			Assert.Throws<ArgumentNullException>(() =>
 				feature.AddSpecification(null)
 			);

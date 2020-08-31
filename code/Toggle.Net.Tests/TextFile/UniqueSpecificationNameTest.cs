@@ -12,9 +12,9 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldThrowIfAddingSpecificationsWithSameName()
 		{
 			var mappings = new DefaultSpecificationMappings();
-			mappings.AddMapping("double", new TrueSpecification());
+			mappings.AddMapping("double", new BoolSpecification(true));
 			Assert.Throws<ArgumentException>(() => 
-				mappings.AddMapping("double", new TrueSpecification()));
+				mappings.AddMapping("double", new BoolSpecification(true)));
 		}
 
 		[Test]
@@ -22,7 +22,7 @@ namespace Toggle.Net.Tests.TextFile
 		{
 			var mappings = new DefaultSpecificationMappings();
 			Assert.Throws<ArgumentException>(() =>
-				mappings.AddMapping("false", new TrueSpecification()));
+				mappings.AddMapping("false", new BoolSpecification(true)));
 		}
 
 		[Test]
@@ -30,7 +30,7 @@ namespace Toggle.Net.Tests.TextFile
 		{
 			var mappings = new DefaultSpecificationMappings();
 			var specificationMappings = mappings.NameSpecificationMappings();
-			specificationMappings.Add("added", new TrueSpecification());
+			specificationMappings.Add("added", new BoolSpecification(true));
 
 			mappings.NameSpecificationMappings().Count
 				.Should().Not.Be.EqualTo(specificationMappings.Count);
@@ -40,9 +40,9 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldThrowIfAddingMultipleSpecificationDifferOnlyInCasing()
 		{
 			var mappings = new DefaultSpecificationMappings();
-			mappings.AddMapping("DOUBle", new TrueSpecification());
+			mappings.AddMapping("DOUBle", new BoolSpecification(true));
 			Assert.Throws<ArgumentException>(() =>
-				mappings.AddMapping("double", new TrueSpecification()));
+				mappings.AddMapping("double", new BoolSpecification(true)));
 		}
 	}
 }

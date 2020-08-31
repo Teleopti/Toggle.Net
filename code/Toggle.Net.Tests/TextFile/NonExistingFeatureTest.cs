@@ -21,7 +21,7 @@ namespace Toggle.Net.Tests.TextFile
 		public void ShouldBeAbleToChangeDefaultSpecification()
 		{
 			var toggleChecker = new ToggleConfiguration(new FileParser(new FileReaderStub(new string[0]), new DefaultSpecificationMappings()))
-				.SetDefaultSpecification(new TrueSpecification())
+				.SetDefaultSpecification(new BoolSpecification(true))
 				.Create();
 			toggleChecker.IsEnabled("sometoggle")
 				.Should().Be.True();

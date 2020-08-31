@@ -40,7 +40,7 @@ namespace Toggle.Net.Configuration
 			if (_userProvider == null)
 				_userProvider = new NullUserProvider();
 			if(_defaultToggleSpecification==null)
-				_defaultToggleSpecification = new FalseSpecification();
+				_defaultToggleSpecification = new BoolSpecification(false);
 			
 			var featureProviders = _featureProviderFactories.Select(factory => factory.Create()).ToArray();
 			return new ToggleChecker(featureProviders, _defaultToggleSpecification, _userProvider);
