@@ -37,7 +37,10 @@ namespace Toggle.Net.Internal
 		{
 			foreach (var specification in _specificationData)
 			{
-				specification.Key.Validate(toggleName, specification.Value);
+				if(specification.Key is IToggleSpecificationValidator specValidator)
+				{
+					specValidator.Validate(toggleName, specification.Value);
+				}
 			}
 		}
 	}

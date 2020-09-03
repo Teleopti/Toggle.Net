@@ -10,7 +10,7 @@ namespace Toggle.Net.Specifications
 	/// it is treated as a list.
 	/// If not, a single string as currentUser is expected.
 	/// </summary>
-	public class UserSpecification : IToggleSpecification
+	public class UserSpecification : IToggleSpecification, IToggleSpecificationValidator
 	{
 		public const string MustHaveDeclaredIds = "Missing UserSpecification parameter '" + idsParameter + "' for feature '{0}'.";
 

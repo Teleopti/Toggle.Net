@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Toggle.Net.Specifications
 {
-	public class RandomSpecification : IToggleSpecification
+	public class RandomSpecification : IToggleSpecification, IToggleSpecificationValidator
 	{
 		private const string percentParameter = "percent";
 		

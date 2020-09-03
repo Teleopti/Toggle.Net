@@ -17,14 +17,5 @@ namespace Toggle.Net.Specifications
 		/// <param name="parameters"></param>
 		/// <returns></returns>
 		bool IsEnabled(string currentUser, IDictionary<string, string> parameters);
-
-		/// <summary>
-		/// Called at startup with parameters for every <see cref="Feature"/> using this specification.
-		/// If not valid, throw a <see cref="InvalidSpecificationParameterException"/>
-		/// with suitable message.
-		/// </summary>
-		/// <param name="toggleName"></param>
-		/// <param name="parameters"></param>
-		void Validate(string toggleName, IDictionary<string, string> parameters);
 	}
 }

@@ -15,9 +15,5 @@ namespace Toggle.Net.Specifications
         {
             return _value;
         }
-
-        public void Validate(string toggleName, IDictionary<string, string> parameters)
-        {
-        }
     }
 }

@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace Toggle.Net.Specifications
 {
-	public class RegExSpecification : IToggleSpecification
+	public class RegExSpecification : IToggleSpecification, IToggleSpecificationValidator
 	{
 		private const string regExParameter = "pattern";
 		private readonly Regex _regex;
