@@ -23,12 +23,6 @@ jobs:
         dotnet-version: 2.0.x
     - name: Restore dependencies
       run: dotnet restore code\\Toggle.Net.sln
-    - name: Find and Replace
-      uses: jacobtomlinson/gha-find-replace@master
-      with:
-        find: "2.3.0.0"
-        replace: "2.3.$GITHUB_RUN_ID.$GITHUB_RUN_NUMBER"
-        include: "Toggle.Net.csproj"
     - uses: kzrnm/get-net-sdk-project-versions-action@v1
       id: get-version
       with:
