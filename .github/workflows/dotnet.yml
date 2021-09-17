@@ -35,7 +35,7 @@ jobs:
     - run: echo "${{steps.get-version.outputs.assembly-version}}"
     - run: echo "${{steps.get-version.outputs.file-version}}"
     - run: echo "${{steps.get-version.outputs.informational-version}}"
-    - run: echo "2.3.$GITHUB_RUN_ID.$GITHUB_RUN_NUMBER"
+    - run: echo "2.3.${{GITHUB_RUN_ID}}.${{GITHUB_RUN_NUMBER}}"
     - name: Build
       run: dotnet build --no-restore code\\Toggle.Net.sln
     - name: Test
