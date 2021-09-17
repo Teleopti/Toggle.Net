@@ -1,4 +1,4 @@
-name: .NET
+name: Toggle.Net Build
 
 on:
   push:
