@@ -21,8 +21,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.0.x
-    - name: Restore dependencies
-      run: dotnet restore code\\Toggle.Net.sln
     - uses: kzrnm/get-net-sdk-project-versions-action@v1
       id: get-version
       with:
@@ -42,9 +40,11 @@ jobs:
     - run: echo "$GITHUB_RUN_NUMBER"
     - run: echo "Deploying to production server on branch $GITHUB_REF"
     - run: echo "Deploying to production server on branch $env:GITHUB_REF"
-    - run: echo "$env:$GITHUB_RUN_ID"
-    - run: echo "$env:$GITHUB_RUN_NUMBER"
+    - run: echo "$env:GITHUB_RUN_ID"
+    - run: echo "$env:GITHUB_RUN_NUMBER"
     - run: echo "2.3.$env:$GITHUB_RUN_ID.$env:$GITHUB_RUN_NUMBER"
+    - name: Restore dependencies
+      run: dotnet restore code\\Toggle.Net.sln
     - name: Build
       run: dotnet build --no-restore code\\Toggle.Net.sln
     - name: Test
