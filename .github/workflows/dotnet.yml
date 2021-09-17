@@ -41,6 +41,7 @@ jobs:
     - run: echo "$GITHUB_RUN_ID"
     - run: echo "$GITHUB_RUN_NUMBER"
     - run: echo "Deploying to production server on branch $GITHUB_REF"
+    - run: echo "Deploying to production server on branch $env:GITHUB_REF"
     - name: Build
       run: dotnet build --no-restore code\\Toggle.Net.sln
     - name: Test
