@@ -42,7 +42,7 @@ jobs:
     - run: echo "Deploying to production server on branch $env:GITHUB_REF"
     - run: echo "$env:GITHUB_RUN_ID"
     - run: echo "$env:GITHUB_RUN_NUMBER"
-    - run: echo "2.3.$env:$GITHUB_RUN_ID.$env:$GITHUB_RUN_NUMBER"
+    - run: echo "2.3.0$env:GITHUB_RUN_NUMBER"
     - name: Restore dependencies
       run: dotnet restore code\\Toggle.Net.sln
     - name: Build
