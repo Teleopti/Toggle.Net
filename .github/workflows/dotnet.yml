@@ -25,6 +25,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore code\\Toggle.Net.sln
     - name: Build
-      run: dotnet build --no-restore --configuration Release code\\Toggle.Net.sln
+      run: dotnet build --configuration Release --no-restore code\\Toggle.Net.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal code\\Toggle.Net.sln
+      run: dotnet test --configuration Release --no-build --verbosity normal code\\Toggle.Net.sln
