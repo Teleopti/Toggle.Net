@@ -29,4 +29,4 @@ jobs:
     - name: Test
       run: dotnet test --configuration Release --no-build --verbosity normal code\\Toggle.Net.sln
     - name: NuGet Push
-      run: dotnet nuget push ./**/*.nupkg --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push "**/*.nupkg" --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
